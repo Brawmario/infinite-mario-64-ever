@@ -1,0 +1,22 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://bi3mvp2yj72db"
+path="res://.godot/imported/ui_lettering.png-44072acf0d6c62962109957094bfcfa3.fontdata"
+
+[deps]
+
+source_file="res://mario/ui_lettering.png"
+dest_files=["res://.godot/imported/ui_lettering.png-44072acf0d6c62962109957094bfcfa3.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("\'0\'-\'9\'", "\'?\'", "\'ä\'", "\'ö\'", "\' \'", "\'a\'-\'z\'", "\',\'", "\'\'\'", "\'!\'", "\'@\'", "\'#\'", "\'%\'", "\'$\'", "\'*\'")
+columns=14
+rows=4
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+fallbacks=[]
+compress=true
+scaling_mode=2

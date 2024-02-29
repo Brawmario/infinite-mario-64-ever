@@ -1,0 +1,338 @@
+[gd_scene load_steps=30 format=3 uid="uid://cg8l4angkunu5"]
+
+[ext_resource type="Script" path="res://addons/libsm64-godot/mario/sm64_mario.gd" id="1_vy05d"]
+[ext_resource type="FontFile" uid="uid://c25d003g01x4h" path="res://mario/Mario64.ttf" id="2_3w352"]
+[ext_resource type="Shader" path="res://EnvironmentMap.gdshader" id="2_a6t65"]
+[ext_resource type="Texture2D" uid="uid://dhp0h2p7egisy" path="res://mario/shadow.png" id="3_cdwnk"]
+[ext_resource type="Texture2D" uid="uid://cwt81cb746m7q" path="res://mario/env_map_shiny_blurry.png" id="3_pcgp7"]
+[ext_resource type="FontFile" uid="uid://bi3mvp2yj72db" path="res://mario/ui_lettering.png" id="4_p843u"]
+[ext_resource type="Shader" path="res://mario/power_ui.gdshader" id="5_cfhc3"]
+[ext_resource type="Texture2D" uid="uid://dyms68ekl5gio" path="res://mario/checkerboard.png" id="6_0vgae"]
+[ext_resource type="Texture2D" uid="uid://bb6iaa2qu36la" path="res://mario/power_head_mask.png" id="7_mmu4j"]
+[ext_resource type="Texture2D" uid="uid://cen8uruthosia" path="res://mario/power_text_mask.png" id="8_xynuk"]
+[ext_resource type="Texture2D" uid="uid://csm3y75usd5u5" path="res://mario/health_slices.png" id="9_0e7ou"]
+[ext_resource type="Shader" path="res://mario/health_slices.gdshader" id="9_03fle"]
+[ext_resource type="Texture2D" uid="uid://u6j2nxksso1y" path="res://mario/checkpoint_guide.png" id="13_s5g3h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x706x"]
+render_priority = 0
+shader = ExtResource("2_a6t65")
+shader_parameter/albedo = Color(0.729412, 0.611765, 0.345098, 0.392157)
+shader_parameter/albedo_texture = ExtResource("3_pcgp7")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y756p"]
+_surfaces = [{
+"aabb": AABB(-0.715868, -0.826613, -6.35508, 1.43174, 1.65323, 4.35509),
+"format": 34896613377,
+"index_count": 102,
+"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 0, 0, 4, 0, 5, 0, 4, 0, 2, 0, 3, 0, 0, 0, 2, 0, 4, 0, 10, 0, 17, 0, 11, 0, 10, 0, 16, 0, 17, 0, 1, 0, 8, 0, 2, 0, 1, 0, 6, 0, 8, 0, 4, 0, 11, 0, 5, 0, 4, 0, 10, 0, 11, 0, 2, 0, 9, 0, 3, 0, 2, 0, 8, 0, 9, 0, 0, 0, 6, 0, 1, 0, 0, 0, 7, 0, 6, 0, 5, 0, 7, 0, 0, 0, 5, 0, 11, 0, 7, 0, 3, 0, 10, 0, 4, 0, 3, 0, 9, 0, 10, 0, 17, 0, 18, 0, 13, 0, 8, 0, 15, 0, 9, 0, 8, 0, 14, 0, 15, 0, 7, 0, 12, 0, 6, 0, 7, 0, 13, 0, 12, 0, 11, 0, 13, 0, 7, 0, 11, 0, 17, 0, 13, 0, 9, 0, 16, 0, 10, 0, 9, 0, 15, 0, 16, 0, 6, 0, 14, 0, 8, 0, 6, 0, 12, 0, 14, 0, 15, 0, 18, 0, 16, 0, 12, 0, 18, 0, 14, 0, 16, 0, 18, 0, 17, 0, 14, 0, 18, 0, 15, 0, 13, 0, 18, 0, 12, 0),
+"lods": [0.860206, PackedByteArray(0, 0, 2, 0, 4, 0, 10, 0, 17, 0, 7, 0, 10, 0, 15, 0, 17, 0, 7, 0, 17, 0, 13, 0, 7, 0, 13, 0, 12, 0, 7, 0, 12, 0, 8, 0, 8, 0, 12, 0, 15, 0, 8, 0, 15, 0, 10, 0, 2, 0, 7, 0, 8, 0, 4, 0, 10, 0, 7, 0, 0, 0, 7, 0, 2, 0, 4, 0, 7, 0, 0, 0, 2, 0, 10, 0, 4, 0, 2, 0, 8, 0, 10, 0, 15, 0, 13, 0, 17, 0, 12, 0, 13, 0, 15, 0)],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 19,
+"vertex_data": PackedByteArray(255, 127, 147, 50, 254, 255, 0, 0, 147, 50, 73, 89, 254, 255, 0, 0, 147, 50, 181, 166, 254, 255, 0, 0, 255, 127, 107, 205, 254, 255, 0, 0, 107, 205, 181, 166, 254, 255, 0, 0, 107, 205, 73, 89, 254, 255, 0, 0, 136, 90, 68, 109, 29, 112, 0, 0, 255, 127, 136, 90, 29, 112, 0, 0, 136, 90, 186, 146, 29, 112, 0, 0, 255, 127, 118, 165, 29, 112, 0, 0, 118, 165, 186, 146, 29, 112, 0, 0, 118, 165, 68, 109, 29, 112, 0, 0, 0, 0, 255, 63, 33, 107, 0, 0, 255, 127, 0, 0, 33, 107, 0, 0, 0, 0, 255, 191, 33, 107, 0, 0, 255, 127, 255, 255, 33, 107, 0, 0, 255, 255, 255, 191, 33, 107, 0, 0, 255, 255, 255, 63, 33, 107, 0, 0, 255, 127, 255, 127, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pv5oi"]
+resource_name = "level1_ref_Circle"
+_surfaces = [{
+"aabb": AABB(-0.715868, -0.826613, -6.35508, 1.43174, 1.65323, 4.35509),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255),
+"format": 34896613399,
+"index_count": 102,
+"index_data": PackedByteArray(5, 0, 1, 0, 3, 0, 1, 0, 8, 0, 10, 0, 8, 0, 5, 0, 6, 0, 1, 0, 5, 0, 8, 0, 20, 0, 34, 0, 22, 0, 20, 0, 32, 0, 34, 0, 2, 0, 16, 0, 4, 0, 2, 0, 12, 0, 16, 0, 9, 0, 23, 0, 11, 0, 9, 0, 21, 0, 23, 0, 4, 0, 19, 0, 7, 0, 4, 0, 16, 0, 19, 0, 0, 0, 12, 0, 2, 0, 0, 0, 14, 0, 12, 0, 11, 0, 14, 0, 0, 0, 11, 0, 23, 0, 14, 0, 7, 0, 21, 0, 9, 0, 7, 0, 19, 0, 21, 0, 35, 0, 36, 0, 26, 0, 17, 0, 30, 0, 18, 0, 17, 0, 29, 0, 30, 0, 15, 0, 25, 0, 13, 0, 15, 0, 27, 0, 25, 0, 22, 0, 27, 0, 15, 0, 22, 0, 34, 0, 27, 0, 18, 0, 32, 0, 20, 0, 18, 0, 30, 0, 32, 0, 13, 0, 29, 0, 17, 0, 13, 0, 25, 0, 29, 0, 31, 0, 36, 0, 33, 0, 24, 0, 36, 0, 28, 0, 33, 0, 36, 0, 35, 0, 28, 0, 36, 0, 31, 0, 26, 0, 36, 0, 24, 0),
+"lods": [0.860206, PackedByteArray(1, 0, 5, 0, 8, 0, 20, 0, 34, 0, 15, 0, 20, 0, 30, 0, 34, 0, 15, 0, 34, 0, 27, 0, 15, 0, 27, 0, 25, 0, 15, 0, 25, 0, 69, 0, 69, 0, 25, 0, 30, 0, 69, 0, 30, 0, 70, 0, 57, 0, 63, 0, 67, 0, 60, 0, 71, 0, 64, 0, 55, 0, 65, 0, 58, 0, 61, 0, 66, 0, 56, 0, 59, 0, 72, 0, 62, 0, 59, 0, 68, 0, 73, 0, 77, 0, 75, 0, 79, 0, 74, 0, 76, 0, 78, 0)],
+"material": SubResource("ShaderMaterial_x706x"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 80,
+"vertex_data": PackedByteArray(255, 127, 147, 50, 254, 255, 70, 196, 255, 127, 147, 50, 254, 255, 254, 127, 147, 50, 73, 89, 254, 255, 92, 198, 147, 50, 73, 89, 254, 255, 254, 127, 147, 50, 181, 166, 254, 255, 92, 198, 147, 50, 181, 166, 254, 255, 254, 127, 255, 127, 107, 205, 254, 255, 254, 127, 255, 127, 107, 205, 254, 255, 70, 196, 107, 205, 181, 166, 254, 255, 254, 127, 107, 205, 181, 166, 254, 255, 92, 198, 107, 205, 73, 89, 254, 255, 254, 127, 107, 205, 73, 89, 254, 255, 92, 198, 136, 90, 68, 109, 29, 112, 92, 198, 136, 90, 68, 109, 29, 112, 91, 123, 255, 127, 136, 90, 29, 112, 70, 196, 255, 127, 136, 90, 29, 112, 33, 122, 136, 90, 186, 146, 29, 112, 92, 198, 136, 90, 186, 146, 29, 112, 91, 123, 255, 127, 118, 165, 29, 112, 33, 122, 255, 127, 118, 165, 29, 112, 70, 196, 118, 165, 186, 146, 29, 112, 91, 123, 118, 165, 186, 146, 29, 112, 92, 198, 118, 165, 68, 109, 29, 112, 91, 123, 118, 165, 68, 109, 29, 112, 92, 198, 0, 0, 255, 63, 33, 107, 90, 215, 0, 0, 255, 63, 33, 107, 91, 123, 255, 127, 0, 0, 33, 107, 88, 209, 255, 127, 0, 0, 33, 107, 33, 122, 0, 0, 255, 191, 33, 107, 90, 215, 0, 0, 255, 191, 33, 107, 91, 123, 255, 127, 255, 255, 33, 107, 33, 122, 255, 127, 255, 255, 33, 107, 88, 209, 255, 255, 255, 191, 33, 107, 91, 123, 255, 255, 255, 191, 33, 107, 90, 215, 255, 255, 255, 63, 33, 107, 91, 123, 255, 255, 255, 63, 33, 107, 90, 215, 255, 127, 255, 127, 0, 0, 255, 255, 118, 165, 186, 146, 29, 112, 128, 92, 255, 127, 0, 0, 33, 107, 94, 247, 255, 127, 0, 0, 33, 107, 174, 109, 255, 127, 255, 255, 33, 107, 197, 122, 255, 127, 255, 255, 33, 107, 241, 243, 255, 255, 255, 63, 33, 107, 190, 246, 147, 50, 181, 166, 254, 255, 74, 197, 147, 50, 181, 166, 254, 255, 43, 197, 107, 205, 181, 166, 254, 255, 98, 197, 107, 205, 181, 166, 254, 255, 60, 197, 118, 165, 186, 146, 29, 112, 161, 96, 118, 165, 186, 146, 29, 112, 34, 197, 118, 165, 186, 146, 29, 112, 73, 197, 255, 127, 0, 0, 33, 107, 189, 248, 255, 127, 0, 0, 33, 107, 120, 93, 255, 127, 255, 255, 33, 107, 59, 106, 255, 127, 255, 255, 33, 107, 253, 246, 255, 255, 255, 63, 33, 107, 173, 246, 255, 127, 147, 50, 254, 255, 234, 197, 255, 127, 147, 50, 254, 255, 232, 197, 147, 50, 181, 166, 254, 255, 88, 208, 147, 50, 181, 166, 254, 255, 241, 198, 147, 50, 181, 166, 254, 255, 73, 197, 107, 205, 181, 166, 254, 255, 224, 212, 107, 205, 181, 166, 254, 255, 235, 199, 107, 205, 181, 166, 254, 255, 64, 197, 255, 127, 136, 90, 29, 112, 245, 212, 255, 127, 136, 90, 29, 112, 71, 202, 255, 127, 136, 90, 29, 112, 194, 197, 255, 127, 136, 90, 29, 112, 212, 197, 136, 90, 186, 146, 29, 112, 166, 213, 136, 90, 186, 146, 29, 112, 57, 197, 136, 90, 186, 146, 29, 112, 251, 120, 118, 165, 186, 146, 29, 112, 112, 108, 118, 165, 186, 146, 29, 112, 226, 211, 118, 165, 186, 146, 29, 112, 81, 197, 118, 165, 186, 146, 29, 112, 247, 196, 0, 0, 255, 63, 33, 107, 48, 243, 255, 127, 0, 0, 33, 107, 227, 243, 255, 127, 0, 0, 33, 107, 16, 244, 255, 127, 255, 255, 33, 107, 229, 248, 255, 127, 255, 255, 33, 107, 73, 249, 255, 255, 255, 63, 33, 107, 26, 243, 0, 0, 255, 127, 255, 127, 255, 255, 44, 47, 43, 175, 255, 127, 255, 255, 210, 208, 43, 175, 255, 127, 255, 255, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 210, 208, 211, 80, 255, 127, 255, 255, 44, 47, 211, 80, 44, 47, 43, 175, 79, 59, 78, 187, 0, 0, 255, 127, 0, 0, 255, 127, 210, 208, 43, 175, 175, 196, 78, 187, 255, 255, 255, 127, 255, 255, 255, 127, 175, 196, 176, 68, 210, 208, 211, 80, 79, 59, 176, 68, 44, 47, 211, 80, 220, 50, 219, 178, 79, 59, 78, 187, 0, 0, 255, 127, 0, 0, 255, 127, 34, 205, 219, 178, 175, 196, 78, 187, 255, 255, 255, 127, 255, 255, 255, 127, 175, 196, 176, 68, 34, 205, 35, 77, 79, 59, 176, 68, 220, 50, 35, 77, 255, 255, 255, 127, 148, 157, 106, 226, 1, 221, 2, 93, 247, 90, 246, 218, 2, 216, 252, 167, 6, 230, 6, 102, 22, 182, 23, 54, 211, 2, 210, 130, 88, 251, 88, 123, 126, 22, 129, 105, 140, 235, 140, 107, 90, 154, 163, 229, 157, 11, 97, 116, 58, 232, 59, 104, 86, 48, 168, 79, 116, 89, 115, 217, 19, 163, 235, 220, 107, 205, 108, 77, 45, 177, 45, 49, 199, 38, 198, 166, 223, 34, 31, 93, 166, 188, 87, 195, 20, 46, 19, 174, 153, 240, 101, 143, 110, 175, 110, 47, 95, 48, 159, 79, 224, 241, 225, 113, 243, 80, 243, 208, 70, 56, 184, 71, 204, 35, 203, 163, 41, 34, 214, 93, 149, 171, 105, 212, 27, 233, 226, 150, 38, 203, 216, 180, 151, 246, 151, 118, 161, 76, 94, 51, 254, 237, 255, 109, 138, 242, 116, 141, 219, 57, 218, 185, 11, 33, 243, 94, 228, 35, 228, 163, 186, 85, 68, 42, 63, 76, 62, 204, 99, 69, 155, 58)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_y756p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_658mp"]
+render_priority = 0
+shader = ExtResource("2_a6t65")
+shader_parameter/albedo = Color(0.729412, 0.611765, 0.345098, 0.392157)
+shader_parameter/albedo_texture = ExtResource("3_pcgp7")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_c1twb"]
+_surfaces = [{
+"aabb": AABB(-0.475528, -0.135488, -0.5, 0.951057, 0.270975, 0.904508),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray(10, 0, 1, 0, 0, 0, 10, 0, 2, 0, 1, 0, 10, 0, 3, 0, 2, 0, 10, 0, 4, 0, 3, 0, 10, 0, 5, 0, 4, 0, 10, 0, 6, 0, 5, 0, 10, 0, 7, 0, 6, 0, 10, 0, 8, 0, 7, 0, 10, 0, 9, 0, 8, 0, 10, 0, 0, 0, 9, 0, 11, 0, 0, 0, 1, 0, 2, 0, 11, 0, 1, 0, 11, 0, 2, 0, 3, 0, 4, 0, 11, 0, 3, 0, 5, 0, 11, 0, 4, 0, 11, 0, 5, 0, 6, 0, 7, 0, 11, 0, 6, 0, 11, 0, 7, 0, 8, 0, 11, 0, 8, 0, 9, 0, 0, 0, 11, 0, 9, 0),
+"lods": [0.0994835, PackedByteArray(10, 0, 5, 0, 1, 0, 10, 0, 7, 0, 5, 0, 10, 0, 9, 0, 7, 0, 10, 0, 1, 0, 9, 0, 5, 0, 11, 0, 1, 0, 11, 0, 5, 0, 7, 0, 11, 0, 7, 0, 9, 0, 1, 0, 11, 0, 9, 0), 0.158132, PackedByteArray(10, 0, 5, 0, 1, 0, 5, 0, 11, 0, 1, 0, 11, 0, 5, 0, 10, 0, 1, 0, 11, 0, 10, 0)],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(255, 127, 255, 127, 0, 0, 0, 0, 147, 91, 255, 127, 204, 88, 0, 0, 0, 0, 255, 127, 200, 97, 0, 0, 16, 69, 255, 127, 165, 161, 0, 0, 228, 48, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 170, 206, 0, 0, 26, 207, 255, 127, 255, 255, 0, 0, 238, 186, 255, 127, 165, 161, 0, 0, 255, 255, 255, 127, 200, 97, 0, 0, 107, 164, 255, 127, 204, 88, 0, 0, 255, 127, 255, 255, 130, 141, 0, 0, 255, 127, 0, 0, 130, 141, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5s6k3"]
+resource_name = "level1_ref_Circle"
+_surfaces = [{
+"aabb": AABB(-0.475528, -0.135488, -0.5, 0.951057, 0.270975, 0.904508),
+"attribute_data": PackedByteArray(255, 127, 0, 0, 147, 91, 204, 88, 0, 0, 200, 97, 16, 69, 165, 161, 228, 48, 255, 255, 255, 127, 170, 206, 26, 207, 255, 255, 238, 186, 165, 161, 255, 255, 200, 97, 107, 164, 204, 88, 255, 127, 130, 141, 255, 127, 130, 141, 147, 91, 204, 88, 147, 91, 204, 88, 147, 91, 204, 88, 255, 127, 170, 206, 255, 127, 170, 206, 255, 127, 170, 206, 255, 127, 130, 141, 255, 127, 130, 141, 255, 127, 130, 141, 255, 127, 130, 141, 255, 127, 130, 141, 255, 127, 130, 141, 147, 91, 204, 88, 147, 91, 204, 88, 147, 91, 204, 88, 147, 91, 204, 88, 255, 127, 170, 206, 255, 127, 170, 206, 255, 127, 170, 206, 255, 127, 170, 206, 238, 186, 165, 161, 238, 186, 165, 161, 238, 186, 165, 161, 238, 186, 165, 161, 107, 164, 204, 88, 107, 164, 204, 88, 107, 164, 204, 88, 107, 164, 204, 88, 255, 127, 130, 141, 255, 127, 130, 141, 255, 127, 130, 141, 255, 127, 130, 141, 255, 127, 130, 141, 255, 127, 130, 141, 255, 127, 130, 141, 255, 127, 130, 141),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray(10, 0, 1, 0, 0, 0, 10, 0, 2, 0, 1, 0, 10, 0, 3, 0, 2, 0, 10, 0, 4, 0, 3, 0, 10, 0, 5, 0, 4, 0, 10, 0, 6, 0, 5, 0, 10, 0, 7, 0, 6, 0, 10, 0, 8, 0, 7, 0, 10, 0, 9, 0, 8, 0, 10, 0, 0, 0, 9, 0, 11, 0, 0, 0, 1, 0, 2, 0, 11, 0, 1, 0, 11, 0, 2, 0, 3, 0, 4, 0, 11, 0, 3, 0, 5, 0, 11, 0, 4, 0, 11, 0, 5, 0, 6, 0, 7, 0, 11, 0, 6, 0, 11, 0, 7, 0, 8, 0, 11, 0, 8, 0, 9, 0, 0, 0, 11, 0, 9, 0),
+"lods": [0.0994835, PackedByteArray(40, 0, 28, 0, 24, 0, 41, 0, 32, 0, 29, 0, 42, 0, 36, 0, 33, 0, 43, 0, 25, 0, 37, 0, 30, 0, 44, 0, 26, 0, 45, 0, 31, 0, 34, 0, 46, 0, 35, 0, 38, 0, 27, 0, 47, 0, 39, 0), 0.158132, PackedByteArray(18, 0, 15, 0, 12, 0, 16, 0, 21, 0, 13, 0, 22, 0, 17, 0, 19, 0, 14, 0, 23, 0, 20, 0)],
+"material": SubResource("ShaderMaterial_658mp"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray(255, 127, 255, 127, 0, 0, 0, 0, 147, 91, 255, 127, 204, 88, 160, 4, 0, 0, 255, 127, 200, 97, 236, 13, 16, 69, 255, 127, 165, 161, 23, 63, 228, 48, 255, 127, 255, 255, 199, 101, 255, 127, 255, 127, 170, 206, 254, 127, 26, 207, 255, 127, 255, 255, 199, 101, 238, 186, 255, 127, 165, 161, 23, 63, 255, 255, 255, 127, 200, 97, 236, 13, 107, 164, 255, 127, 204, 88, 45, 8, 255, 127, 255, 255, 130, 141, 255, 191, 255, 127, 0, 0, 130, 141, 255, 63, 147, 91, 255, 127, 204, 88, 157, 56, 147, 91, 255, 127, 204, 88, 56, 56, 147, 91, 255, 127, 204, 88, 190, 6, 255, 127, 255, 127, 170, 206, 18, 80, 255, 127, 255, 127, 170, 206, 248, 85, 255, 127, 255, 127, 170, 206, 207, 96, 255, 127, 255, 255, 130, 141, 111, 186, 255, 127, 255, 255, 130, 141, 85, 177, 255, 127, 255, 255, 130, 141, 115, 233, 255, 127, 0, 0, 130, 141, 71, 73, 255, 127, 0, 0, 130, 141, 208, 84, 255, 127, 0, 0, 130, 141, 5, 18, 147, 91, 255, 127, 204, 88, 123, 55, 147, 91, 255, 127, 204, 88, 145, 37, 147, 91, 255, 127, 204, 88, 89, 53, 147, 91, 255, 127, 204, 88, 105, 24, 255, 127, 255, 127, 170, 206, 134, 80, 255, 127, 255, 127, 170, 206, 4, 90, 255, 127, 255, 127, 170, 206, 6, 81, 255, 127, 255, 127, 170, 206, 233, 94, 238, 186, 255, 127, 165, 161, 96, 62, 238, 186, 255, 127, 165, 161, 221, 54, 238, 186, 255, 127, 165, 161, 122, 63, 238, 186, 255, 127, 165, 161, 244, 48, 107, 164, 255, 127, 204, 88, 43, 26, 107, 164, 255, 127, 204, 88, 160, 32, 107, 164, 255, 127, 204, 88, 161, 28, 107, 164, 255, 127, 204, 88, 154, 27, 255, 127, 255, 255, 130, 141, 180, 183, 255, 127, 255, 255, 130, 141, 60, 181, 255, 127, 255, 255, 130, 141, 158, 200, 255, 127, 255, 255, 130, 141, 248, 207, 255, 127, 0, 0, 130, 141, 82, 69, 255, 127, 0, 0, 130, 141, 16, 75, 255, 127, 0, 0, 130, 141, 254, 48, 255, 127, 0, 0, 130, 141, 172, 44, 255, 255, 255, 127, 84, 43, 208, 143, 231, 64, 16, 147, 188, 96, 181, 181, 248, 120, 86, 227, 255, 127, 255, 255, 86, 99, 7, 7, 182, 53, 66, 31, 16, 19, 23, 63, 78, 26, 192, 76, 255, 255, 255, 127, 0, 0, 255, 127, 201, 248, 26, 103, 218, 43, 86, 127, 144, 149, 241, 4, 117, 236, 136, 147, 169, 23, 168, 151, 202, 96, 53, 31, 34, 243, 219, 140, 60, 208, 61, 80, 48, 200, 49, 72, 226, 20, 226, 148, 8, 58, 247, 69, 123, 71, 131, 56, 120, 253, 84, 151, 21, 230, 235, 84, 231, 42, 50, 127, 74, 47, 165, 110, 63, 228, 190, 155, 35, 241, 36, 113, 34, 27, 34, 155, 150, 13, 104, 114, 153, 213, 223, 13, 80, 59, 162, 1, 179, 39, 205, 57, 113, 50, 96, 63, 197, 221, 176, 106, 103, 219, 167, 153, 170, 7, 72, 85, 224, 23, 245, 180, 86, 236, 168, 147, 136, 244, 136, 116, 61, 226, 62, 98, 237, 253, 16, 130, 23, 20, 22, 148, 179, 14, 76, 113, 1, 30, 254, 97, 239, 3, 238, 131)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_c1twb")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ag55j"]
+font = ExtResource("2_3w352")
+font_size = 24
+shadow_color = Color(0, 0, 0, 0.388235)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_a3013"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_55yaj"]
+height = 1.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_p2kxy"]
+font = ExtResource("2_3w352")
+font_size = 24
+shadow_color = Color(0, 0, 0, 0.670588)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6h3om"]
+font = ExtResource("2_3w352")
+font_size = 24
+shadow_color = Color(0, 0, 0, 0.666667)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_iy0ix"]
+height = 6.0
+radius = 4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_46e2l"]
+font = ExtResource("4_p843u")
+font_size = 52
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7qgrv"]
+shader = ExtResource("5_cfhc3")
+shader_parameter/checkerRepeat = 12.0
+shader_parameter/checkerRotate = -0.1
+shader_parameter/outlineSize = 6.58
+shader_parameter/checkerScrollSpeed = Vector2(0.2, -0.1)
+shader_parameter/outlineColor = Color(0.447059, 0.745098, 0.917647, 1)
+shader_parameter/topGradientCheck1 = Color(0.34902, 0.631373, 0.901961, 1)
+shader_parameter/bottomGradientCheck1 = Color(0.207843, 0.356863, 0.490196, 1)
+shader_parameter/topGradientCheck2 = Color(0.129412, 0.372549, 0.588235, 1)
+shader_parameter/bottomGradientCheck2 = Color(0, 0.172549, 0.321569, 1)
+shader_parameter/checkerTexture = ExtResource("6_0vgae")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywjq4"]
+shader = ExtResource("5_cfhc3")
+shader_parameter/checkerRepeat = 16.0
+shader_parameter/checkerRotate = 0.1
+shader_parameter/outlineSize = -0.36
+shader_parameter/checkerScrollSpeed = Vector2(-0.05, 0.15)
+shader_parameter/outlineColor = Color(1, 1, 1, 1)
+shader_parameter/topGradientCheck1 = Color(1, 1, 1, 1)
+shader_parameter/bottomGradientCheck1 = Color(1, 1, 1, 1)
+shader_parameter/topGradientCheck2 = Color(1, 0.858824, 0.866667, 1)
+shader_parameter/bottomGradientCheck2 = Color(1, 1, 1, 1)
+shader_parameter/checkerTexture = ExtResource("6_0vgae")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ya0m5"]
+shader = ExtResource("9_03fle")
+shader_parameter/wedges = 8.0
+
+[node name="RandomMario" type="Node3D"]
+script = ExtResource("1_vy05d")
+
+[node name="star_arrow" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("ArrayMesh_pv5oi")
+skeleton = NodePath("")
+
+[node name="StarMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0)
+mesh = SubResource("ArrayMesh_5s6k3")
+skeleton = NodePath("")
+
+[node name="SeedLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Current Seed: "
+label_settings = SubResource("LabelSettings_ag55j")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPolyphonic_a3013")
+autoplay = true
+max_polyphony = 8
+
+[node name="MarioCollision" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionCylinder" type="CollisionShape3D" parent="MarioCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.556764, 0)
+shape = SubResource("CylinderShape3D_55yaj")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.995, 0)
+size = Vector3(1, 32, 1)
+texture_albedo = ExtResource("3_cdwnk")
+normal_fade = 0.5
+upper_fade = 1e-05
+
+[node name="HintText" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 0.747
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0239868
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+text = "Press A to spawn"
+label_settings = SubResource("LabelSettings_p2kxy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HintText2" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+anchor_top = 0.747
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0239868
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+text = "Press A to keep playing"
+label_settings = SubResource("LabelSettings_p2kxy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HintText3" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+anchor_top = 0.747
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 97.967
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+text = "Press B to generate new level"
+label_settings = SubResource("LabelSettings_p2kxy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelTimer" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 0.015
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.225
+grow_horizontal = 2
+grow_vertical = 2
+text = "40:02.394"
+label_settings = SubResource("LabelSettings_6h3om")
+horizontal_alignment = 1
+
+[node name="SpawnLineCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+enabled = false
+target_position = Vector3(0, -12, 0)
+
+[node name="SpawnCast" type="ShapeCast3D" parent="."]
+enabled = false
+shape = SubResource("CylinderShape3D_iy0ix")
+target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(1, 1, 1, 1)
+
+[node name="CoinCounter" type="Label" parent="."]
+texture_filter = 1
+texture_repeat = 1
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.05
+anchor_right = 0.138
+anchor_bottom = 0.108
+offset_left = -0.0760002
+offset_top = 0.0999985
+offset_right = 0.0559845
+offset_bottom = 0.0159988
+text = "$*0"
+label_settings = SubResource("LabelSettings_46e2l")
+
+[node name="PowerDisp" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_7qgrv")
+anchors_preset = -1
+anchor_left = 0.833
+anchor_top = 0.017
+anchor_right = 0.912
+anchor_bottom = 0.199
+offset_left = -0.659058
+offset_top = -0.322001
+offset_right = 0.257935
+offset_bottom = -0.534012
+grow_horizontal = 2
+size_flags_vertical = 0
+texture = ExtResource("7_mmu4j")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="PowerText" type="TextureRect" parent="PowerDisp"]
+material = SubResource("ShaderMaterial_ywjq4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+texture = ExtResource("8_xynuk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HealthWedges" type="TextureRect" parent="PowerDisp"]
+material = SubResource("ShaderMaterial_ya0m5")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.279
+anchor_top = 0.067
+anchor_right = 0.771
+anchor_bottom = 0.559
+offset_left = 0.0512276
+offset_top = -0.0737171
+offset_right = -0.0287933
+offset_bottom = -0.0640869
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+texture = ExtResource("9_0e7ou")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="CheckpointHelper" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.766
+anchor_right = 0.205
+anchor_bottom = 0.987
+offset_left = 0.448
+offset_top = 0.065979
+offset_right = 0.119995
+offset_bottom = -0.163025
+texture = ExtResource("13_s5g3h")
+expand_mode = 3
+stretch_mode = 4

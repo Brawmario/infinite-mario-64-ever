@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv5gybk06nugs"]
+
+[ext_resource type="Script" path="res://mario/settings_menu.gd" id="1_idc87"]
+[ext_resource type="FontFile" uid="uid://c25d003g01x4h" path="res://mario/Mario64.ttf" id="2_golva"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hngwe"]
+font = ExtResource("2_golva")
+font_size = 24
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iux1j"]
+font = ExtResource("2_golva")
+font_size = 24
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vudne"]
+font = ExtResource("2_golva")
+font_size = 24
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_unvq4"]
+font = ExtResource("2_golva")
+font_size = 24
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_idc87")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.375
+anchor_bottom = 1.0
+offset_top = 40.0
+offset_right = -3.05176e-05
+offset_bottom = -200.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.470588)
+
+[node name="LabelContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="ScreenResLabel" type="Label" parent="Control/LabelContainer"]
+layout_mode = 2
+text = "Screen Resolution
+320x240"
+label_settings = SubResource("LabelSettings_hngwe")
+horizontal_alignment = 1
+
+[node name="FullscreenLabel" type="Label" parent="Control/LabelContainer"]
+layout_mode = 2
+text = "Fullscreen
+Disabled"
+label_settings = SubResource("LabelSettings_iux1j")
+horizontal_alignment = 1
+
+[node name="BorderLabel" type="Label" parent="Control/LabelContainer"]
+layout_mode = 2
+text = "Borderless
+Disabled"
+label_settings = SubResource("LabelSettings_vudne")
+horizontal_alignment = 1
+
+[node name="TransparencyLabel" type="Label" parent="Control/LabelContainer"]
+layout_mode = 2
+text = "Background Transparency
+Disabled"
+label_settings = SubResource("LabelSettings_unvq4")
+horizontal_alignment = 1

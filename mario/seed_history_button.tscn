@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://1u6ytnvj6uls"]
+
+[ext_resource type="Texture2D" uid="uid://dyms68ekl5gio" path="res://mario/checkerboard.png" id="1_a6age"]
+[ext_resource type="Script" path="res://mario/seed_history_button.gd" id="1_lqp34"]
+[ext_resource type="FontFile" uid="uid://c25d003g01x4h" path="res://mario/Mario64.ttf" id="2_225ry"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gp3rm"]
+font = ExtResource("2_225ry")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_kt82q"]
+font = ExtResource("2_225ry")
+font_size = 24
+
+[node name="SeedHistoryButton" type="Button"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 128)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_lqp34")
+
+[node name="HBoxContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 128
+dragger_visibility = 1
+
+[node name="SeedPic" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_stretch_ratio = 0.52
+texture = ExtResource("1_a6age")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SeedLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Seed: ghndfiofvjofdg"
+label_settings = SubResource("LabelSettings_gp3rm")
+
+[node name="StatsLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "****      $x78"
+label_settings = SubResource("LabelSettings_kt82q")
+
+[node name="TimeLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "1:43.399"
+label_settings = SubResource("LabelSettings_kt82q")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

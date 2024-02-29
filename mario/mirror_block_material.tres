@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bnkwm7s8dfa0h"]
+
+[ext_resource type="Shader" path="res://mario/block_material.gdshader" id="1_oc7bn"]
+[ext_resource type="Texture2D" uid="uid://bv5hj342vy6tc" path="res://mario/debug_floor.png" id="2_ky4nj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_oc7bn")
+shader_parameter/color_multiply = Vector3(0.2, 0.3, 1)
+shader_parameter/texture_albedo = ExtResource("2_ky4nj")

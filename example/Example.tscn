@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://bculs28gstcxk"]
+
+[ext_resource type="Script" path="res://example/Gift.gd" id="1_yfglq"]
+[ext_resource type="Script" path="res://example/ChatContainer.gd" id="2_knohk"]
+[ext_resource type="Script" path="res://example/LineEdit.gd" id="3_oafvo"]
+[ext_resource type="Script" path="res://example/Button.gd" id="4_wrvcq"]
+
+[node name="Example" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gift" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_yfglq")
+scopes = Array[String](["chat:edit", "chat:read", "moderator:read:followers"])
+
+[node name="ChatContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_knohk")
+
+[node name="Chat" type="Panel" parent="ChatContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ChatContainer/Chat"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+follow_focus = true
+
+[node name="ChatMessagesContainer" type="VBoxContainer" parent="ChatContainer/Chat/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChatContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="ChatContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+caret_blink = true
+script = ExtResource("3_oafvo")
+
+[node name="Button" type="Button" parent="ChatContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Send"
+script = ExtResource("4_wrvcq")
