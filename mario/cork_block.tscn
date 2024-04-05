@@ -40,7 +40,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ucsde")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1prgb"]
-size = Vector3(0.1, 0.75, 0.1)
+size = Vector3(0.1, 1, 0.1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fis8v"]
 height = 1.35
@@ -59,7 +59,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
 shape = SubResource("BoxShape3D_1prgb")
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="."]

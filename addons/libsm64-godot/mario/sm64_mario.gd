@@ -258,7 +258,7 @@ func _process(delta: float) -> void:
 	star_mesh.basis = star_mesh.basis.rotated(star_mesh.basis.z.normalized(), float(Time.get_ticks_msec()) * 0.001)
 	star_arrow.scale = Vector3(0.0035, 0.0035, 0.0035)
 	star_arrow.look_at(SOGlobal.main_star_pos)
-	if hide_hud:
+	if hide_hud and !hide_hud_old:
 		seed_label.visible = false
 		level_timer.visible = false
 		hint_text.visible = false
@@ -267,6 +267,20 @@ func _process(delta: float) -> void:
 		coin_counter.visible = false
 		power_disp.visible = false
 		checkpoint_helper.visible = false
+		star_arrow.visible = false
+	
+	if !hide_hud and hide_hud_old:
+		seed_label.visible = true
+		level_timer.visible = true
+		hint_text.visible = true
+		hint_text_2.visible = true
+		hint_text_3.visible = true
+		coin_counter.visible = true
+		power_disp.visible = true
+		checkpoint_helper.visible = true
+		star_arrow.visible = true
+	
+	hide_hud_old = hide_hud
 	#DebugDraw3D.draw_sphere(position, 0.1, Color(1, 1, 1), delta)
 
 
@@ -506,9 +520,15 @@ var view_stage_transform : Transform3D
 
 func _calculate_gameplay_camera(delta : float):
 	if Input.is_action_just_pressed("cam_stick_left"):
-		_cam_rotation_target -= deg_to_rad(45)
+		if SOGlobal.flip_x:
+			_cam_rotation_target -= deg_to_rad(45)
+		else:
+			_cam_rotation_target += deg_to_rad(45)
 	if Input.is_action_just_pressed("cam_stick_right"):
-		_cam_rotation_target += deg_to_rad(45)
+		if SOGlobal.flip_x:
+			_cam_rotation_target += deg_to_rad(45)
+		else:
+			_cam_rotation_target -= deg_to_rad(45)
 	
 	if Input.is_action_just_pressed("cam_stick_down"):
 		_cam_zoom += 1
@@ -558,6 +578,7 @@ func _calculate_gameplay_camera(delta : float):
 	camera.global_rotation_degrees = snapped(camera.global_rotation_degrees, Vector3(angle_snap, angle_snap, angle_snap))
 
 var hide_hud : bool = false
+var hide_hud_old : bool = false
 var gravity_add : float = 0.0
 var gravity_set_time : int = 0
 
@@ -574,8 +595,9 @@ func _tick(delta: float) -> void:
 			_respawn_mario()
 	
 	if _action == SM64MarioAction.STAR_DANCE_EXIT and !_paused and ready_to_play:
-		hint_text_3.visible = true
-		hint_text_2.visible = true
+		if !hide_hud:
+			hint_text_3.visible = true
+			hint_text_2.visible = true
 		if Input.is_action_just_pressed("mario_a"):
 			_internal.set_action(SM64MarioAction.IDLE)
 		if Input.is_action_just_pressed("mario_b"):
@@ -589,13 +611,15 @@ func _tick(delta: float) -> void:
 	
 	if _paused or !ready_to_play:
 		seed_label.text = "Current Seed: " + str(SOGlobal.current_seed)
-		seed_label.visible = true
+		if !hide_hud:
+			seed_label.visible = true
+			checkpoint_helper.visible = true
 		level_timer.visible = false
-		checkpoint_helper.visible = true
 	else:
 		checkpoint_helper.visible = false
 		seed_label.visible = false
-		level_timer.visible = true
+		if !hide_hud:
+			level_timer.visible = true
 		var timer_seconds : float = float(finish_time - start_time) * 0.001
 		if finish_time < 0:
 			timer_seconds = float(Time.get_ticks_msec() - start_time) * 0.001
@@ -606,7 +630,8 @@ func _tick(delta: float) -> void:
 		hint_text.visible = false
 	else:
 		visible = false
-		hint_text.visible = true
+		if !hide_hud:
+			hint_text.visible = true
 	
 	if _paused:
 		return
@@ -621,14 +646,15 @@ func _tick(delta: float) -> void:
 		_paused = true
 		return
 	
-	_mario_input.stick = Input.get_vector(stick_left, stick_right, stick_up, stick_down, 0)
-	_mario_input.stick.x = move_toward(_mario_input.stick.x, 0, 0.05)
-	_mario_input.stick.y = move_toward(_mario_input.stick.y, 0, 0.05)
-	_mario_input.stick = _mario_input.stick * 1.1
+	var pl_input := PlayerInput.from_input()
+	
+	_mario_input.stick = Vector2(pl_input.JoyXAxis, pl_input.JoyYAxis)
 	if _mario_input.stick.length() > 1.0:
 		_mario_input.stick = _mario_input.stick.normalized()
 	#DebugDraw2D.set_text("INPUT", _mario_input.stick)
 	var camera_input : Vector2 = Input.get_vector("cam_stick_left", "cam_stick_right", "cam_stick_up", "cam_stick_down")
+	if SOGlobal.flip_x:
+		camera_input.x *= -1
 	
 	var look_direction := Vector2(0, 1).rotated(-_cam_rotation)
 	_mario_input.cam_look = Vector2(look_direction.x, look_direction.y)
@@ -665,7 +691,9 @@ func _tick(delta: float) -> void:
 		view_stage_transform = camera.global_transform
 		return
 	
+	mario_collision.position.y = 0.25
 	collision_cylinder.radius = 0.5
+	collision_cylinder.height = 1.75
 	
 	#print(action & SM64MarioAction.FLAG_STATIONARY > 0)
 	
@@ -679,6 +707,8 @@ func _tick(delta: float) -> void:
 			#teleport(global_position)
 			_velocity = _velocity * Vector3(0, 1, 0)
 		SM64MarioAction.GROUND_POUND:
+			mario_collision.position.y = -0.5
+			collision_cylinder.height = 2.0
 			collision_cylinder.radius = 1.25
 	
 	if Input.is_action_just_pressed("dpad_down") and checkpoint_flag and is_instance_valid(checkpoint_flag):

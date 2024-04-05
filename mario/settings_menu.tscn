@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv5gybk06nugs"]
+[gd_scene load_steps=44 format=3 uid="uid://bv5gybk06nugs"]
 
 [ext_resource type="Script" path="res://mario/settings_menu.gd" id="1_idc87"]
 [ext_resource type="FontFile" uid="uid://c25d003g01x4h" path="res://mario/Mario64.ttf" id="2_golva"]
+[ext_resource type="Texture2D" uid="uid://d11gt4i4nrfra" path="res://mario/circle.png" id="3_0r5oq"]
+[ext_resource type="Texture2D" uid="uid://bb41shgtyaqr0" path="res://mario/setting_guide.png" id="4_g41gs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hngwe"]
 font = ExtResource("2_golva")
@@ -23,6 +25,155 @@ font = ExtResource("2_golva")
 font_size = 24
 font_color = Color(0.2, 0.2, 0.2, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_6pukl"]
+font = ExtResource("2_golva")
+font_size = 24
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uqcvd"]
+font = ExtResource("2_golva")
+font_size = 24
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qxady"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_trl4h"]
+font = ExtResource("2_golva")
+font_size = 24
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ck521"]
+font = ExtResource("2_golva")
+font_size = 24
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jo3q4"]
+font = ExtResource("2_golva")
+font_size = 24
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v84ql"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_k8xut"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x16cp"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhk5q"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ops45"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_d2xf5"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6k57l"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_qvqfv"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mxx15"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_fkb42"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pd85t"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_rauqk"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ythw"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_f7whm"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bneqf"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5tat"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_djrm2"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_vxhvk"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7yoce"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_y2amo"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lcr7k"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_yvtx2"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cg5b3"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_dp0fb"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qcroj"]
+font = ExtResource("2_golva")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_u0cq1"]
+font = ExtResource("2_golva")
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3yeo7"]
+font = ExtResource("2_golva")
+font_size = 24
+shadow_color = Color(0, 0, 0, 0.211765)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k6huw"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_rin82"]
+font = ExtResource("2_golva")
+font_size = 24
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.568627)
+shadow_offset = Vector2(2, 2)
+
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -36,9 +187,11 @@ script = ExtResource("1_idc87")
 layout_mode = 1
 anchor_right = 0.375
 anchor_bottom = 1.0
-offset_top = 40.0
-offset_right = -3.05176e-05
-offset_bottom = -200.0
+offset_left = 240.0
+offset_right = 560.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -50,6 +203,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.470588)
 
 [node name="LabelContainer" type="VBoxContainer" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,3 +239,427 @@ text = "Background Transparency
 Disabled"
 label_settings = SubResource("LabelSettings_unvq4")
 horizontal_alignment = 1
+
+[node name="FPSLabel" type="Label" parent="Control/LabelContainer"]
+layout_mode = 2
+text = "Max Framerate
+60"
+label_settings = SubResource("LabelSettings_6pukl")
+horizontal_alignment = 1
+
+[node name="VsyncLabel" type="Label" parent="Control/LabelContainer"]
+layout_mode = 2
+text = "Vsync
+Disabled"
+label_settings = SubResource("LabelSettings_uqcvd")
+horizontal_alignment = 1
+
+[node name="ControlsLabelContainer" type="VBoxContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="ColorRect" type="ColorRect" parent="Control/ControlsLabelContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="coord_disp_root" type="Control" parent="Control/ControlsLabelContainer/ColorRect"]
+layout_mode = 1
+anchor_left = 0.802
+anchor_top = 0.5
+anchor_right = 0.802
+anchor_bottom = 0.5
+offset_left = -0.15802
+offset_right = -0.15802
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line2D" type="Line2D" parent="Control/ControlsLabelContainer/ColorRect/coord_disp_root"]
+points = PackedVector2Array(60, 0, 42.426, 42.426, 0, 60, -42.426, 42.426, -60, 0, -42.426, -42.426, 0, -60, 42.426, -42.426)
+closed = true
+width = 2.0
+default_color = Color(0.52549, 0.52549, 0.52549, 1)
+antialiased = true
+
+[node name="Line2D2" type="Line2D" parent="Control/ControlsLabelContainer/ColorRect/coord_disp_root"]
+points = PackedVector2Array(64, 64, 64, -64, -64, -64, -64, 64)
+closed = true
+width = 2.0
+antialiased = true
+
+[node name="raw_dot" type="TextureRect" parent="Control/ControlsLabelContainer/ColorRect/coord_disp_root"]
+modulate = Color(0.643137, 0.172549, 0.141176, 1)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+pivot_offset = Vector2(2, 2)
+texture = ExtResource("3_0r5oq")
+expand_mode = 1
+
+[node name="adj_dot" type="TextureRect" parent="Control/ControlsLabelContainer/ColorRect/coord_disp_root"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+pivot_offset = Vector2(2, 2)
+texture = ExtResource("3_0r5oq")
+expand_mode = 1
+
+[node name="rawcoord_label" type="Label" parent="Control/ControlsLabelContainer/ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 161.0
+offset_bottom = 28.0
+text = "Raw Coordinates"
+label_settings = SubResource("LabelSettings_qxady")
+
+[node name="rawcoord_x" type="Label" parent="Control/ControlsLabelContainer/ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 28.0
+offset_right = 161.0
+offset_bottom = 56.0
+text = "x: 0.4399"
+label_settings = SubResource("LabelSettings_qxady")
+
+[node name="rawcoord_y" type="Label" parent="Control/ControlsLabelContainer/ColorRect"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 28.0
+offset_right = 314.0
+offset_bottom = 56.0
+text = "y: 0.4399"
+label_settings = SubResource("LabelSettings_qxady")
+
+[node name="adjcoord_x" type="Label" parent="Control/ControlsLabelContainer/ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 90.0
+offset_right = 161.0
+offset_bottom = 118.0
+text = "x: 0.4399"
+label_settings = SubResource("LabelSettings_qxady")
+
+[node name="adjcoord_y" type="Label" parent="Control/ControlsLabelContainer/ColorRect"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 90.0
+offset_right = 314.0
+offset_bottom = 118.0
+text = "y: 0.4399"
+label_settings = SubResource("LabelSettings_qxady")
+
+[node name="adjcoord_label" type="Label" parent="Control/ControlsLabelContainer/ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 60.0
+offset_right = 209.0
+offset_bottom = 88.0
+text = "Adjusted Coordinates"
+label_settings = SubResource("LabelSettings_qxady")
+
+[node name="InnerDeadzoneLabel" type="Label" parent="Control/ControlsLabelContainer"]
+layout_mode = 2
+text = "Inner Deadzone
+0.05"
+label_settings = SubResource("LabelSettings_trl4h")
+horizontal_alignment = 1
+
+[node name="OuterDeadzoneLabel" type="Label" parent="Control/ControlsLabelContainer"]
+layout_mode = 2
+text = "Outer Deadzone
+0.05"
+label_settings = SubResource("LabelSettings_ck521")
+horizontal_alignment = 1
+
+[node name="HorizontalAxisLabel" type="Label" parent="Control/ControlsLabelContainer"]
+layout_mode = 2
+text = "Camera Horizontal Axis Invert
+Enabled"
+label_settings = SubResource("LabelSettings_jo3q4")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RebindingLabelContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="JoyLeftLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Joystick Left"
+label_settings = SubResource("LabelSettings_v84ql")
+horizontal_alignment = 1
+
+[node name="JoyLeftLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Axis 1"
+label_settings = SubResource("LabelSettings_k8xut")
+horizontal_alignment = 1
+
+[node name="JoyRightLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Joystick Right"
+label_settings = SubResource("LabelSettings_x16cp")
+horizontal_alignment = 1
+
+[node name="JoyRightLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Joystick Y Axis"
+label_settings = SubResource("LabelSettings_lhk5q")
+horizontal_alignment = 1
+
+[node name="JoyUpLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Joystick Up"
+label_settings = SubResource("LabelSettings_ops45")
+horizontal_alignment = 1
+
+[node name="JoyUpLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Axis 1"
+label_settings = SubResource("LabelSettings_d2xf5")
+horizontal_alignment = 1
+
+[node name="JoyDownLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Joystick Down"
+label_settings = SubResource("LabelSettings_6k57l")
+horizontal_alignment = 1
+
+[node name="JoyDownLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Axis 1"
+label_settings = SubResource("LabelSettings_qvqfv")
+horizontal_alignment = 1
+
+[node name="CUpLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "C  Up"
+label_settings = SubResource("LabelSettings_mxx15")
+horizontal_alignment = 1
+
+[node name="CUpLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "C  Up
+Axis 1"
+label_settings = SubResource("LabelSettings_fkb42")
+horizontal_alignment = 1
+
+[node name="CDownLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "C  Down"
+label_settings = SubResource("LabelSettings_pd85t")
+horizontal_alignment = 1
+
+[node name="CDownLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "C  Down
+Axis 1"
+label_settings = SubResource("LabelSettings_rauqk")
+horizontal_alignment = 1
+
+[node name="CLeftLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "C  Left"
+label_settings = SubResource("LabelSettings_0ythw")
+horizontal_alignment = 1
+
+[node name="CLeftLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "C  Left
+Axis 1"
+label_settings = SubResource("LabelSettings_f7whm")
+horizontal_alignment = 1
+
+[node name="CRightLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "C  Right"
+label_settings = SubResource("LabelSettings_bneqf")
+horizontal_alignment = 1
+
+[node name="CRightLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "C  Right
+Axis 1"
+label_settings = SubResource("LabelSettings_c5tat")
+horizontal_alignment = 1
+
+[node name="ALabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "A  Button"
+label_settings = SubResource("LabelSettings_djrm2")
+horizontal_alignment = 1
+
+[node name="ALabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "A  Button
+Axis 1"
+label_settings = SubResource("LabelSettings_vxhvk")
+horizontal_alignment = 1
+
+[node name="BLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "B  Button"
+label_settings = SubResource("LabelSettings_7yoce")
+horizontal_alignment = 1
+
+[node name="BLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "B  Button
+Axis 1"
+label_settings = SubResource("LabelSettings_y2amo")
+horizontal_alignment = 1
+
+[node name="ZLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Z  Button"
+label_settings = SubResource("LabelSettings_lcr7k")
+horizontal_alignment = 1
+
+[node name="ZLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Z  Button
+Axis 1"
+label_settings = SubResource("LabelSettings_yvtx2")
+horizontal_alignment = 1
+
+[node name="CPLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Place Checkpoint"
+label_settings = SubResource("LabelSettings_cg5b3")
+horizontal_alignment = 1
+
+[node name="CPLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Place Checkpoint
+Axis 1"
+label_settings = SubResource("LabelSettings_dp0fb")
+horizontal_alignment = 1
+
+[node name="CPLLabel2" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Go To Checkpoint"
+label_settings = SubResource("LabelSettings_qcroj")
+horizontal_alignment = 1
+
+[node name="CPLLabel" type="Label" parent="Control/ScrollContainer/RebindingLabelContainer"]
+layout_mode = 2
+text = "Go To Checkpoint
+Axis 1"
+label_settings = SubResource("LabelSettings_u0cq1")
+horizontal_alignment = 1
+
+[node name="control_settings_guide" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 29.9994
+offset_top = -16.5
+offset_right = 242.0
+offset_bottom = 16.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Control Settings   >"
+label_settings = SubResource("LabelSettings_3yeo7")
+
+[node name="action_rebind_guide" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -16.5
+offset_right = 12.0002
+offset_bottom = 16.5
+grow_vertical = 2
+text = "<  Action Bindings"
+label_settings = SubResource("LabelSettings_3yeo7")
+
+[node name="binding_menu_box" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -60.0
+offset_right = 160.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.435294)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/binding_menu_box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="binding_menu_label" type="Label" parent="Control/binding_menu_box/VBoxContainer"]
+layout_mode = 2
+text = "Binding Left Stick
+
+Waiting for input...
+
+ESC to cancel, BACKSPACE to clear bindings"
+label_settings = SubResource("LabelSettings_k6huw")
+horizontal_alignment = 1
+
+[node name="WarningLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -127.0
+offset_right = 398.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "
+
+
+
+* Controller input is disabled in this menu.
+Please use your keyboard to adjust settings.
+Some menus may require you to use your mouse
+to scroll the menu up and down."
+label_settings = SubResource("LabelSettings_rin82")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 806.0
+offset_top = 554.0
+offset_right = 1170.0
+offset_bottom = 714.0
+texture = ExtResource("4_g41gs")
+expand_mode = 3
+stretch_mode = 4

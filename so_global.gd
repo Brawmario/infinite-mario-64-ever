@@ -15,6 +15,9 @@ var save_data := MarioSaveFile.new()
 var total_coins : int = 0
 var main_star_pos : Vector3 = Vector3.ZERO
 var restart_desired : bool = false
+var inner_deadzone : float = 0.05
+var outer_deadzone : float = 0.95
+var flip_x : bool = true
 
 func play_sound(inSound, volume : float = 0, pitch : float = 1) -> void:
 	var playback : AudioStreamPlaybackPolyphonic = global_sound.get_stream_playback()
@@ -181,7 +184,18 @@ func _ready():
 	add_child(global_sound)
 	global_sound.stream = global_sound_stream
 	global_sound.play()
+	print("INITIAL BINDINGS!")
+	for i in InputMap.get_actions().size():
+		var action := InputMap.get_actions()[i]
+		if action.begins_with("ui"):
+			continue
+		print(action)
+		for k in InputMap.action_get_events(action).size():
+			var event = InputMap.action_get_events(action)[k]
+			print(event)
+			print(event.device)
 	save_data.load_game()
+
 
 var unfocused := false
 

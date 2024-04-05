@@ -178,13 +178,13 @@ func _generate_random_level(useSeed) -> void:
 			var cur_s_slope : float = 0
 			var cur_w_slope : float = 0
 			if slope_random.randf() < north_slope_chance:
-				cur_n_slope = randi_range(0, max_north_slope)
+				cur_n_slope = slope_random.randi_range(0, max_north_slope)
 			if slope_random.randf() < east_slope_chance:
-				cur_e_slope = randi_range(0, max_east_slope)
+				cur_e_slope = slope_random.randi_range(0, max_east_slope)
 			if slope_random.randf() < south_slope_chance:
-				cur_s_slope = randi_range(0, max_south_slope)
+				cur_s_slope = slope_random.randi_range(0, max_south_slope)
 			if slope_random.randf() < west_slope_chance:
-				cur_w_slope = randi_range(0, max_west_slope)
+				cur_w_slope = slope_random.randi_range(0, max_west_slope)
 			new_block = SOGlobal.generate_block_from_pos_and_size(block_pos, block_size, cur_n_slope, cur_e_slope, cur_s_slope, cur_w_slope) as LevelBlock
 			#new_block.basis = new_block.basis.rotated(Vector3.UP, deg_to_rad(ang_deg))
 			#new_block._update_transform()
@@ -222,13 +222,13 @@ func _generate_random_level(useSeed) -> void:
 				var cur_s_slope : float = 0
 				var cur_w_slope : float = 0
 				if slope_random.randf() < north_slope_chance:
-					cur_n_slope = randi_range(0, max_north_slope)
+					cur_n_slope = slope_random.randi_range(0, max_north_slope)
 				if slope_random.randf() < east_slope_chance:
-					cur_e_slope = randi_range(0, max_east_slope)
+					cur_e_slope = slope_random.randi_range(0, max_east_slope)
 				if slope_random.randf() < south_slope_chance:
-					cur_s_slope = randi_range(0, max_south_slope)
+					cur_s_slope = slope_random.randi_range(0, max_south_slope)
 				if slope_random.randf() < west_slope_chance:
-					cur_w_slope = randi_range(0, max_west_slope)
+					cur_w_slope = slope_random.randi_range(0, max_west_slope)
 				var pillar_stick_instance := SOGlobal.generate_block_from_pos_and_size(pillar_stick_offset_for_material, pillar_stick_size, cur_n_slope, cur_e_slope, cur_s_slope, cur_w_slope)  as LevelBlock
 				pillar_stick_instance.position = pillar_pos + Vector3(0, -pillar_height * 0.4, 0) + Vector3(0, pillar_stick_height, 0)
 				pillar_stick_instance.start_position = pillar_stick_instance.position
@@ -295,13 +295,13 @@ func _generate_random_level(useSeed) -> void:
 				var cur_s_slope : float = 0
 				var cur_w_slope : float = 0
 				if slope_random.randf() < north_slope_chance:
-					cur_n_slope = randi_range(0, max_north_slope)
+					cur_n_slope = slope_random.randi_range(0, max_north_slope)
 				if slope_random.randf() < east_slope_chance:
-					cur_e_slope = randi_range(0, max_east_slope)
+					cur_e_slope = slope_random.randi_range(0, max_east_slope)
 				if slope_random.randf() < south_slope_chance:
-					cur_s_slope = randi_range(0, max_south_slope)
+					cur_s_slope = slope_random.randi_range(0, max_south_slope)
 				if slope_random.randf() < west_slope_chance:
-					cur_w_slope = randi_range(0, max_west_slope)
+					cur_w_slope = slope_random.randi_range(0, max_west_slope)
 				var top_block := SOGlobal.generate_block_from_pos_and_size(block_pos + total_offset, top_block_size, cur_n_slope, cur_e_slope, cur_s_slope, cur_w_slope, new_block) as LevelBlock
 				if is_moving:
 					top_block._change_block_move_mode(LevelBlock.move_type.CHILD)
@@ -338,13 +338,13 @@ func _generate_random_level(useSeed) -> void:
 				var cur_s_slope : float = 0
 				var cur_w_slope : float = 0
 				if slope_random.randf() < north_slope_chance:
-					cur_n_slope = randi_range(0, max_north_slope)
+					cur_n_slope = slope_random.randi_range(0, max_north_slope)
 				if slope_random.randf() < east_slope_chance:
-					cur_e_slope = randi_range(0, max_east_slope)
+					cur_e_slope = slope_random.randi_range(0, max_east_slope)
 				if slope_random.randf() < south_slope_chance:
-					cur_s_slope = randi_range(0, max_south_slope)
+					cur_s_slope = slope_random.randi_range(0, max_south_slope)
 				if slope_random.randf() < west_slope_chance:
-					cur_w_slope = randi_range(0, max_west_slope)
+					cur_w_slope = slope_random.randi_range(0, max_west_slope)
 				var new_pepper_block := SOGlobal.generate_block_from_pos_and_size(final_pos, pepper_block_size, cur_n_slope, cur_e_slope, cur_s_slope, cur_w_slope, new_block) as LevelBlock
 				if is_moving:
 					new_pepper_block._change_block_move_mode(LevelBlock.move_type.CHILD)
@@ -391,13 +391,13 @@ func _generate_random_level(useSeed) -> void:
 					var cur_s_slope : float = 0
 					var cur_w_slope : float = 0
 					if slope_random.randf() < north_slope_chance:
-						cur_n_slope = randi_range(0, max_north_slope)
+						cur_n_slope = slope_random.randi_range(0, max_north_slope)
 					if slope_random.randf() < east_slope_chance:
-						cur_e_slope = randi_range(0, max_east_slope)
+						cur_e_slope = slope_random.randi_range(0, max_east_slope)
 					if slope_random.randf() < south_slope_chance:
-						cur_s_slope = randi_range(0, max_south_slope)
+						cur_s_slope = slope_random.randi_range(0, max_south_slope)
 					if slope_random.randf() < west_slope_chance:
-						cur_w_slope = randi_range(0, max_west_slope)
+						cur_w_slope = slope_random.randi_range(0, max_west_slope)
 					SOGlobal.generate_block_from_pos_and_size(final_pos, pepper_block_size, cur_n_slope, cur_e_slope, cur_s_slope, cur_w_slope)
 					
 		if i == iter - 1:

@@ -4,7 +4,7 @@ extends Gift
 @onready var mario_node : SM64Mario = $"../RandomMario"
 @onready var sm_64_static_surface_handler = $"../SM64StaticSurfaceHandler"
 @onready var sm_64_surface_objects_handler = $"../SM64SurfaceObjectsHandler"
-var enable_twitch : bool = false
+var enable_twitch : bool = true
 
 var cooldown_list = {}
 
