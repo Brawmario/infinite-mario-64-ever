@@ -10,6 +10,7 @@ var block_material : ShaderMaterial
 var sky_material := preload("res://mario/sky_material.tres") as ShaderMaterial
 var global_sound := AudioStreamPlayer.new() as AudioStreamPlayer
 var global_sound_stream := AudioStreamPolyphonic.new() as AudioStreamPolyphonic
+var libsm64_sound := LibSM64AudioStreamPlayer.new()
 var start_angle := 0.0
 var save_data := MarioSaveFile.new()
 var total_coins : int = 0
@@ -185,6 +186,8 @@ func _ready():
 	add_child(global_sound)
 	global_sound.stream = global_sound_stream
 	global_sound.play()
+	add_child(libsm64_sound)
+	libsm64_sound.play()
 	print("INITIAL BINDINGS!")
 	for i in InputMap.get_actions().size():
 		var action := InputMap.get_actions()[i]

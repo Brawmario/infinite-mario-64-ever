@@ -108,5 +108,3 @@ mesh = SubResource("BoxMesh_sq71t")
 
 [node name="RandomMario" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_1ybnx")]
 camera = NodePath("../Camera3D")
-
-[node name="LibSM64AudioStreamPlayer" type="LibSM64AudioStreamPlayer" parent="."]

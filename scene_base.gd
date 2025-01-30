@@ -6,7 +6,6 @@ extends Node3D
 @onready var mesh_instance_3d = $MeshInstance3D
 @onready var start_displ = $StartDispl
 @onready var world_environment := $WorldEnvironment as WorldEnvironment
-@onready var lib_sm_64_audio_stream_player: LibSM64AudioStreamPlayer = $LibSM64AudioStreamPlayer
 
 
 func _process(delta):
@@ -531,7 +530,6 @@ func _create_mario_world(useSeed = str(randi())) -> void:
 		LibSM64Global.terminate()
 
 	_is_libsm64_init = LibSM64Global.init()
-	lib_sm_64_audio_stream_player.play()
 
 	_generate_random_level(useSeed)
 
