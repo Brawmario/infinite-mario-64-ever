@@ -1,10 +1,10 @@
 extends Gift
 
 @onready var audio_stream_player = $AudioStreamPlayer
-@onready var mario_node : SM64Mario = $"../RandomMario"
+@onready var mario_node : LibSM64Mario = $"../RandomMario"
 @onready var sm_64_static_surface_handler = $"../SM64StaticSurfaceHandler"
 @onready var sm_64_surface_objects_handler = $"../SM64SurfaceObjectsHandler"
-var enable_twitch : bool = true
+@export var enable_twitch : bool = true
 
 var cooldown_list = {}
 
@@ -48,7 +48,7 @@ func _ready() -> void:
 	# the second arg will contain all params in a PackedStringArray
 	# This command can only be executed by VIPS/MODS/SUBS/STREAMER
 	#add_command("test", command_test, 0, 0, PermissionFlag.NON_REGULAR)
-	
+
 	add_command("spawnblock", chat_spawn_block)
 	add_command("spawnbrick", chat_spawn_brick)
 	add_command("spawncoin", chat_spawn_coin)
@@ -56,7 +56,7 @@ func _ready() -> void:
 	add_command("burn", chat_set_mario_burning)
 	add_command("lowgrav", chat_set_mario_gravity_lw)
 	add_command("highgrav", chat_set_mario_gravity_hi)
-	
+
 	# These two commands can be executed by everyone
 	#add_command("helloworld", hello_world)
 	#add_command("greetme", greet_me)
@@ -170,7 +170,7 @@ func chat_set_mario_burning(cmd_info : CommandInfo):
 	if !check_cooldown(cmd_info.sender_data.user):
 		return
 	set_cooldown(cmd_info.sender_data.user)
-	SOGlobal.current_mario._internal.set_action(SM64MarioAction.LAVA_BOOST)
+	SOGlobal.current_mario.action = LibSM64.ACT_LAVA_BOOST
 
 func chat_set_mario_gravity_lw(cmd_info : CommandInfo):
 	if !check_cooldown(cmd_info.sender_data.user):

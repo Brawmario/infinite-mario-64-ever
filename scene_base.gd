@@ -1,17 +1,19 @@
 extends Node3D
 
-@onready var sm_64_mario := $RandomMario as SM64Mario
+@onready var sm_64_mario := $RandomMario as LibSM64Mario
 @onready var sm_64_static_surface_handler: Node = $SM64StaticSurfaceHandler
 @onready var sm_64_surface_objects_handler: Node = $SM64SurfaceObjectsHandler
 @onready var mesh_instance_3d = $MeshInstance3D
 @onready var start_displ = $StartDispl
 @onready var world_environment := $WorldEnvironment as WorldEnvironment
+@onready var lib_sm_64_audio_stream_player: LibSM64AudioStreamPlayer = $LibSM64AudioStreamPlayer
+
 
 func _process(delta):
-	
+
 	start_displ.position = sm_64_mario.position
 	SOGlobal.block_material.set_shader_parameter("outer_time", float(Time.get_ticks_msec()) * 0.001)
-	
+
 	if !sm_64_mario.ready_to_play:
 		start_displ.visible = true
 	else:
@@ -21,9 +23,9 @@ func _process(delta):
 var level_root_position_table : Array[Vector3] = []
 
 func _generate_random_level(useSeed) -> void:
-	
+
 	SOGlobal.level_bounds = AABB()
-	
+
 	level_root_position_table.clear()
 	var root_random = RandomNumberGenerator.new()
 	var root_random_iterational = RandomNumberGenerator.new()
@@ -37,10 +39,10 @@ func _generate_random_level(useSeed) -> void:
 	var pillar_random = RandomNumberGenerator.new()
 	var slope_random = RandomNumberGenerator.new()
 	var cork_random = RandomNumberGenerator.new()
-	
+
 	var apple_seed = RandomNumberGenerator.new()
 	apple_seed.seed = hash(useSeed)
-	
+
 	root_random.seed = apple_seed.randi()
 	root_random_iterational.seed = apple_seed.randi()
 	baseblock_random.seed = apple_seed.randi()
@@ -53,7 +55,7 @@ func _generate_random_level(useSeed) -> void:
 	pillar_random.seed = apple_seed.randi()
 	slope_random.seed = apple_seed.randi()
 	cork_random.seed = apple_seed.randi()
-	
+
 	var block_colors := Gradient.new()
 	var color_count : int = environment_random.randi_range(3, 12)
 	var avg_dist : float = 1.0 / color_count
@@ -69,19 +71,19 @@ func _generate_random_level(useSeed) -> void:
 	var value : float = environment_random.randf_range(0.3, 1)
 	block_colors.add_point(0, Color.from_hsv(hue, saturation, value))
 	block_colors.add_point(0.999, Color.from_hsv(hue, saturation, value))
-	
-	
+
+
 	var new_gradient_texture : GradientTexture2D = GradientTexture2D.new()
 	new_gradient_texture.width = 256
 	new_gradient_texture.height = 1
 	new_gradient_texture.fill_from = Vector2(-0.001, 0)
 	new_gradient_texture.fill_to = Vector2(1.001, 0)
 	new_gradient_texture.gradient = block_colors
-	
+
 	SOGlobal.block_material.set_shader_parameter("texture_gradient", new_gradient_texture)
-	
+
 	#world_environment.environment.sky.sky_material = SOGlobal.sky_material
-	
+
 	var level_gen_source : Vector3 = Vector3.ZERO
 	var level_gen_source_velocity : float = root_random.randf_range(2.0, 6.0)
 	var level_gen_source_angle : float = root_random.randf_range(0, PI * 2)
@@ -110,10 +112,10 @@ func _generate_random_level(useSeed) -> void:
 	var max_velocity_change_reduction = root_random.randf_range(0.88, 0.96)
 	var min_angle_velocity_change_reduction = root_random.randf_range(0.65, 0.72)
 	var max_angle_velocity_change_reduction = root_random.randf_range(0.72, 0.85)
-	
+
 	var iter : int = root_random.randi_range(25, 65)
 	var pillar_chance = root_random.randf_range(0.025, 0.05)
-	
+
 	var north_slope_chance = root_random.randf_range(0.0, 0.6)
 	var east_slope_chance = root_random.randf_range(0.0, 0.6)
 	var south_slope_chance = root_random.randf_range(0.0, 0.6)
@@ -138,9 +140,9 @@ func _generate_random_level(useSeed) -> void:
 		level_gen_source_angle += level_gen_source_angle_velocity
 		var ang_deg = rad_to_deg(level_gen_source_angle)
 		ang_deg = snapped(ang_deg, 45)
-		
+
 		level_gen_source_velocity = minf(level_gen_source_velocity, 12.5)
-		
+
 		var src_no_y : Vector3 = (level_gen_source * Vector3(1, 0, 1))
 		if src_no_y.length() > 100:
 			level_gen_source_angle = root_random_iterational.randf_range(0, PI * 2)
@@ -152,9 +154,9 @@ func _generate_random_level(useSeed) -> void:
 		block_height = pow(block_height, block_height_bias) * max_block_height + 1
 		var block_size : Vector3 = Vector3(baseblock_random.randf_range(4, max_block_width), block_height, baseblock_random.randf_range(4, max_block_length))
 		block_size = snapped(block_size, Vector3(1.0, 1.0, 1.0))
-		
+
 		var top_area : float = block_size.x * block_size.z
-		
+
 		var new_block : LevelBlock
 		if absf(block_size.x - block_size.z) < 2 and baseblock_random.randf() > 0.5:
 			block_size.z = block_size.x
@@ -188,14 +190,14 @@ func _generate_random_level(useSeed) -> void:
 			new_block = SOGlobal.generate_block_from_pos_and_size(block_pos, block_size, cur_n_slope, cur_e_slope, cur_s_slope, cur_w_slope) as LevelBlock
 			#new_block.basis = new_block.basis.rotated(Vector3.UP, deg_to_rad(ang_deg))
 			#new_block._update_transform()
-		
+
 		# types of moving blocks to consider:
 		# constantly rotating
 		# periods of rotation and pause
 		# rotate back and forth
 		# linear back and forth horizontally
 		# linear back and forth vertically
-		
+
 		if pillar_random.randf() < pillar_chance:
 			var pillar_side_offset := Vector3.FORWARD.rotated(Vector3.UP, deg_to_rad(ang_deg + 90)) * pillar_random.randi_range(10, 18)
 			var pillar_height := pillar_random.randi_range(12, 32)
@@ -234,26 +236,26 @@ func _generate_random_level(useSeed) -> void:
 				pillar_stick_instance.start_position = pillar_stick_instance.position
 				pillar_stick_instance.basis = Basis.IDENTITY.rotated(Vector3.UP, random_angle_offset)
 				pillar_stick_instance.start_rotation = pillar_stick_instance.basis
-		
+
 		var is_moving : bool = false
 		var longest_axis : Vector3 = Vector3.UP
 		var longest_axis_length : float = block_size.y
 		var significantly_longest_axis : bool = false
 		if block_size.y - block_size.x > 3 and block_size.y - block_size.z > 3 and absf(block_size.x - block_size.z) < 3:
 			significantly_longest_axis = true
-		
+
 		if block_size.z > block_size.x and block_size.z > block_size.y:
 			longest_axis = Vector3.FORWARD
 			longest_axis_length = block_size.z
 			if block_size.z - block_size.x > 3 and block_size.z - block_size.y > 3 and absf(block_size.x - block_size.y) < 3:
 				significantly_longest_axis = true
-		
+
 		if block_size.x > block_size.z and block_size.x > block_size.y:
 			longest_axis = Vector3.RIGHT
 			longest_axis_length = block_size.x
 			if block_size.x - block_size.y > 3 and block_size.x - block_size.z > 3 and absf(block_size.y - block_size.z) < 3:
 				significantly_longest_axis = true
-		
+
 		if significantly_longest_axis and movement_random.randf() > 0.5 and level_gen_source_velocity > 7 and i > 3:
 			is_moving = true
 			var cw_or_ccw : int = movement_random.randi_range(0, 1) * 2 - 1
@@ -263,7 +265,7 @@ func _generate_random_level(useSeed) -> void:
 			var should_pause : int = movement_random.randi_range(0, 1)
 			new_block.pause_time = movement_random.randf_range(2, 4) * should_pause
 			new_block._change_block_move_mode(LevelBlock.move_type.ROTATE_REPEAT)
-		
+
 		if top_area >= 24 and i != iter - 1:
 			if movement_random.randf() > 0.5 and block_size.x == block_size.z and !is_moving and level_gen_source_velocity > 7 and i > 3:
 				is_moving = true
@@ -305,7 +307,7 @@ func _generate_random_level(useSeed) -> void:
 				var top_block := SOGlobal.generate_block_from_pos_and_size(block_pos + total_offset, top_block_size, cur_n_slope, cur_e_slope, cur_s_slope, cur_w_slope, new_block) as LevelBlock
 				if is_moving:
 					top_block._change_block_move_mode(LevelBlock.move_type.CHILD)
-		
+
 		var block_volume = block_size.x * block_size.y * block_size.z
 		if block_volume >= 320:
 			for b in range(pepper_random.randi_range(min_pepper_blocks, max_pepper_blocks)):
@@ -385,7 +387,7 @@ func _generate_random_level(useSeed) -> void:
 						final_pos.y += 0.5
 					if fmod(pepper_block_size.z + block_size.z, 2) == 1 and x_or_z_pep == 1:
 						final_pos.z += 0.5
-					
+
 					var cur_n_slope : float = 0
 					var cur_e_slope : float = 0
 					var cur_s_slope : float = 0
@@ -399,15 +401,15 @@ func _generate_random_level(useSeed) -> void:
 					if slope_random.randf() < west_slope_chance:
 						cur_w_slope = slope_random.randi_range(0, max_west_slope)
 					SOGlobal.generate_block_from_pos_and_size(final_pos, pepper_block_size, cur_n_slope, cur_e_slope, cur_s_slope, cur_w_slope)
-					
+
 		if i == iter - 1:
 			var new_star_pos : Vector3 = block_pos + Vector3(0, block_size.y * 0.5, 0) + Vector3(0, 3.5, 0)
 			var new_star := SOGlobal.generate_power_star("main", new_star_pos) as PowerStar
 			new_star.main_star = true
 			new_star._activate_star()
-		
+
 		level_gen_source += Vector3(0, vertical_vel, level_gen_source_velocity).rotated(Vector3(0, 1, 0), deg_to_rad(ang_deg))
-	
+
 	await get_tree().create_timer(0.02).timeout
 	var num_coins_spawned = 0
 	var coin_cast : RayCast3D = RayCast3D.new()
@@ -426,8 +428,8 @@ func _generate_random_level(useSeed) -> void:
 						var possible_contents : Array = [["coin", "coin", "coin"], ["coin", "coin", "coin", "coin", "coin"], ["coin", "coin", "coin", "coin", "coin", "coin", "coin", "coin", "coin", "coin"]]
 						var new_cork : CorkBox = SOGlobal.generate_cork_box_with_contents(corner_1 + Vector3(bx, 0, bz) + Vector3(0, 3, 0), possible_contents[cork_random.randi_range(0, possible_contents.size() - 1)])
 						corks.append(new_cork)
-			
-			
+
+
 			for bx in cur_box_size.x:
 				for bz in cur_box_size.z:
 					if coin_random.randf_range(0, 1) > 0.99975:
@@ -493,7 +495,7 @@ func _generate_random_level(useSeed) -> void:
 				SOGlobal.generate_yellow_coin_at_pos(line_origin)
 				SOGlobal.generate_yellow_coin_at_pos(line_origin + line_dir * -1)
 				SOGlobal.generate_yellow_coin_at_pos(line_origin + line_dir * -2)
-				
+
 		else:
 			continue
 	if corks.size() > 0 and should_generate_cork_star:
@@ -502,17 +504,19 @@ func _generate_random_level(useSeed) -> void:
 		#print("GENERATED CORK STAR")
 		#DebugDraw3D.draw_sphere(corks[which_cork].position, 1.0, Color(1, 0, 0), 100)
 
+var _is_libsm64_init := false
+
 func _create_mario_world(useSeed = str(randi())) -> void:
-	
+
 	SOGlobal.current_seed = useSeed
-	
-	SM64Global.rom_filepath = OS.get_executable_path().get_base_dir() + "/SM64.z64"
-	
-	SM64Global.scale_factor = 110.0
-	
+
+	LibSM64Global.load_rom_file("./SM64.z64")
+
+	LibSM64.scale_factor = 110.0
+
 	SOGlobal.total_coins = 0
-	
-	if SM64Global.is_init():
+
+	if _is_libsm64_init:
 		for mesh in SOGlobal.level_meshes:
 			if mesh and is_instance_valid(mesh):
 				mesh.free()
@@ -526,19 +530,20 @@ func _create_mario_world(useSeed = str(randi())) -> void:
 			if node is CorkBox:
 				node.queue_free()
 		SOGlobal.level_meshes.clear()
-		SM64Global.terminate()
-	
-	SM64Global.init()
-	
+		LibSM64Global.terminate()
+
+	_is_libsm64_init = LibSM64Global.init()
+	lib_sm_64_audio_stream_player.play()
+
 	_generate_random_level(useSeed)
-	
+
 	await get_tree().create_timer(0.2).timeout
-	
+
 	SOGlobal.save_data.try_submit_save_block(useSeed)
-	
+
 	sm_64_static_surface_handler.load_static_surfaces()
 	sm_64_surface_objects_handler.load_all_surface_objects()
-	
+
 	sm_64_mario.create()
 	SOGlobal.level_start_time = Time.get_ticks_msec()
 	sm_64_mario.preview_cam_yaw = 45
@@ -547,14 +552,14 @@ func _create_mario_world(useSeed = str(randi())) -> void:
 	sm_64_mario.preview_cam_pan_pitch = 0
 	sm_64_mario.preview_cam_pan_yaw = 0
 	sm_64_mario.ready_to_play = false
-	
+
 	if ProjectSettings.get_setting("display/window/size/transparent") == true:
 		world_environment.environment.sky.sky_material = null
 		return
-	
+
 	var sky_random = RandomNumberGenerator.new()
 	sky_random.seed = hash(useSeed)
-	
+
 	var sky_colors := Gradient.new()
 	var color_count : int = sky_random.randi_range(3, 12)
 	var avg_dist : float = 1.0 / color_count
@@ -570,7 +575,7 @@ func _create_mario_world(useSeed = str(randi())) -> void:
 	var value : float = sky_random.randf_range(0.3, 1)
 	sky_colors.add_point(0, Color.from_hsv(hue, saturation, value))
 	sky_colors.add_point(0.999, Color.from_hsv(hue, saturation, value))
-	
+
 	var sky_ramp := Gradient.new()
 	color_count = sky_random.randi_range(3, 12)
 	avg_dist = 1.0 / color_count
@@ -586,32 +591,32 @@ func _create_mario_world(useSeed = str(randi())) -> void:
 	value = sky_random.randf_range(0.01, 0.05)
 	sky_ramp.add_point(0, Color.from_hsv(hue, saturation, value))
 	sky_ramp.add_point(0.999, Color.from_hsv(hue, saturation, value))
-	
-	
-	
+
+
+
 	var sky_gradient_texture : GradientTexture2D = GradientTexture2D.new()
 	sky_gradient_texture.width = 256
 	sky_gradient_texture.height = 1
 	sky_gradient_texture.fill_from = Vector2(-0.001, 0)
 	sky_gradient_texture.fill_to = Vector2(1.001, 0)
 	sky_gradient_texture.gradient = sky_colors
-	
+
 	var sky_ramp_texture : GradientTexture2D = GradientTexture2D.new()
 	sky_ramp_texture.width = 256
 	sky_ramp_texture.height = 1
 	sky_ramp_texture.fill_from = Vector2(-0.001, 0)
 	sky_ramp_texture.fill_to = Vector2(1.001, 0)
 	sky_ramp_texture.gradient = sky_ramp
-	
+
 	if false:
 		var debug_gradient : TextureRect = TextureRect.new()
 		debug_gradient.size = Vector2(256, 256)
 		debug_gradient.custom_minimum_size = Vector2(256, 256)
 		debug_gradient.texture = sky_ramp_texture
 		SOGlobal.add_child(debug_gradient)
-	
+
 	SOGlobal.sky_material.set_shader_parameter("sky_color_ramp", sky_ramp_texture)
-	
+
 	var sky_noise_texture := NoiseTexture2D.new()
 	sky_noise_texture.seamless = true
 	sky_noise_texture.color_ramp = sky_colors
@@ -651,7 +656,7 @@ func _on_tree_exiting() -> void:
 #	pass
 	# Clean up the `libsm64` world when the scene is freed.
 	sm_64_mario.delete()
-	SM64Global.terminate()
+	LibSM64Global.terminate()
 
 
 #func _process(delta):

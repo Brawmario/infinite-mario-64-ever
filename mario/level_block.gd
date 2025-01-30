@@ -86,7 +86,7 @@ func _change_block_move_mode(in_type : move_type) -> void:
 			add_to_group("libsm64_surface_objects")
 		move_type.CHILD:
 			add_to_group("libsm64_surface_objects")
-	
+
 
 func _process(delta : float):
 	if SOGlobal.current_mario._paused:
@@ -95,7 +95,7 @@ func _process(delta : float):
 		additive_transform = movement_parent.global_transform
 	var move_duration : float = move_time + pause_time
 	cur_time += delta * forward_or_backward
-	
+
 	if cur_time >= move_duration:
 		match current_move_type:
 			move_type.LINEAR_PINGPONG or move_type.ROTATE_PINGPONG:
@@ -106,9 +106,9 @@ func _process(delta : float):
 				target_delta_rotation = base_transform.basis.rotated(continuous_rotation.normalized(), deg_to_rad(continuous_rotation.length()))
 			move_type.KEYFRAMED:
 				cur_time = fmod(cur_time, movement_keyframes[movement_keyframes.size()].time)
-	
+
 	var ratio : float = minf(1.0, cur_time / move_time)
-	
+
 	match current_move_type:
 		move_type.NONE:
 			return
@@ -132,5 +132,5 @@ func _process(delta : float):
 			base_transform.origin = current_keyframe.position.lerp(next_keyframe.position, keyframe_ratio)
 			base_transform.basis = current_keyframe.rotation.slerp(next_keyframe.rotation, keyframe_ratio)
 	base_transform.basis = base_transform.basis.orthonormalized()
-	
+
 	global_transform = additive_transform * base_transform

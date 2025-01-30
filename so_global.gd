@@ -3,7 +3,7 @@ extends Node
 var level_bounds : AABB = AABB()
 var level_meshes : Array[LevelBlock] = []
 var level_start_time : int = 0
-var current_mario : SM64Mario
+var current_mario : LibSM64Mario
 var current_level_manager
 var current_seed : String
 var block_material := preload("res://mario/block_material.tres") as ShaderMaterial
@@ -100,9 +100,9 @@ func generate_block_from_pos_and_size(inPos : Vector3, inSize : Vector3, north_s
 		new_block.movement_parent = in_parent
 	new_block.current_move_type = move_mode
 	add_child(new_block)
-	var surface_properties := SM64SurfacePropertiesComponent.new()
-	surface_properties.surface_properties = SM64SurfaceProperties.new()
-	surface_properties.surface_properties.surface_type = SM64SurfaceProperties.SURFACE_TYPE_DEFAULT
+	var surface_properties := LibSM64SurfacePropertiesComponent.new()
+	surface_properties.surface_properties = LibSM64SurfaceProperties.new()
+	surface_properties.surface_properties.surface_type = LibSM64.SURFACE_DEFAULT
 	new_block.add_child(surface_properties)
 	new_block.set_instance_shader_parameter("fade_in", (float(Time.get_ticks_msec()) / 1000) + float(level_meshes.size()) * 0.01 + 0.2)
 	new_block.set_instance_shader_parameter("spawn_dir", Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)))
@@ -119,13 +119,13 @@ func generate_block_from_pos_and_size(inPos : Vector3, inSize : Vector3, north_s
 	new_collider_shape.shape = new_box_shape
 	new_collider.set_collision_layer_value(1, true)
 	new_collider.set_collision_mask_value(1, true)
-	
+
 	new_block.add_child(new_collider)
 	new_collider.add_child(new_collider_shape)
-	
+
 	level_meshes.append(new_block)
 	return new_block
-	
+
 
 func generate_cylinder(inPos : Vector3, in_height : float, in_radius_bot : float, in_radius_top : float, in_parent = SOGlobal, move_mode : LevelBlock.move_type = LevelBlock.move_type.NONE, chatter : bool = false) -> LevelBlock:
 	var new_block := LevelBlock.new()
@@ -140,9 +140,9 @@ func generate_cylinder(inPos : Vector3, in_height : float, in_radius_bot : float
 	SOGlobal.level_bounds = SOGlobal.level_bounds.expand(new_block.position)
 	new_block.mesh = new_mesh
 	new_block.material_override = block_material
-	var surface_properties := SM64SurfacePropertiesComponent.new()
-	surface_properties.surface_properties = SM64SurfaceProperties.new()
-	surface_properties.surface_properties.surface_type = SM64SurfaceProperties.SURFACE_TYPE_DEFAULT
+	var surface_properties := LibSM64SurfacePropertiesComponent.new()
+	surface_properties.surface_properties = LibSM64SurfaceProperties.new()
+	surface_properties.surface_properties.surface_type = LibSM64.SURFACE_DEFAULT
 	new_block.current_move_type = move_mode
 	if in_parent != SOGlobal:
 		new_block.movement_parent = in_parent
@@ -163,10 +163,10 @@ func generate_cylinder(inPos : Vector3, in_height : float, in_radius_bot : float
 	new_collider_shape.shape = new_collision_shape
 	new_collider.set_collision_layer_value(1, true)
 	new_collider.set_collision_mask_value(1, true)
-	
+
 	new_block.add_child(new_collider)
 	new_collider.add_child(new_collider_shape)
-	
+
 	level_meshes.append(new_block)
 	return new_block
 
@@ -203,8 +203,7 @@ func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		SOGlobal.save_data.save_game()
 		get_tree().quit()
-	if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT: 
+	if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
 		unfocused = true
-	elif what == NOTIFICATION_WM_WINDOW_FOCUS_IN: 
+	elif what == NOTIFICATION_WM_WINDOW_FOCUS_IN:
 		unfocused = false
-		

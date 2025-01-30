@@ -22,7 +22,7 @@ func _ready():
 		new_star_mat.set_shader_parameter("albedo", Color(0.05, 0.1, 0.3, 0.75))
 		new_star_mat.set_shader_parameter("albedo_texture", preload("res://mario/env_map_balanced.png"))
 	star_mesh.material_override = new_star_mat
-	
+
 	await get_tree().create_timer(0.1).timeout
 	var intersecting = true
 	while intersecting:
@@ -94,7 +94,7 @@ func _respawn():
 func _on_area_3d_area_entered(area: Area3D):
 	if !visible:
 		return
-	if area.get_parent() is SM64Mario:
+	if area.get_parent() is LibSM64Mario:
 		area.get_parent()._get_power_star(star_id)
 		_collect()
 	else:

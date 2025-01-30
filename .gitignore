@@ -1,2 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
+
+# Godot exports
+export/
+
+# N64 ROM files
+*.z64
+*.n64

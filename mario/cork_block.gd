@@ -30,7 +30,7 @@ func _process(delta):
 		scale = Vector3.ONE
 		visible = false
 		if !on_bust:
-			var our_surface_handler := SOGlobal.current_level_manager.sm_64_surface_objects_handler as SM64SurfaceObjectsHandler
+			var our_surface_handler := SOGlobal.current_level_manager.sm_64_surface_objects_handler as LibSM64SurfaceObjectsHandler
 			our_surface_handler.delete_surface_object(box_collision)
 			SOGlobal.play_sound(preload("res://mario/sfx/sm64_breaking_box.wav"))
 		on_bust = true
@@ -42,7 +42,7 @@ func _process(delta):
 				"star":
 					var new_star := SOGlobal.generate_power_star("cork", position, position + Vector3(0, 1.5, 0)) as PowerStar
 					new_star.destroy_on_retry = true
-					
+
 			item_drop_index += 1
 			last_drop_time = Time.get_ticks_msec()
 
@@ -51,7 +51,7 @@ func _bust() -> void:
 	area_3d.set_deferred("monitoring", false)
 	busted = true
 	bust_time = Time.get_ticks_msec()
-	
+
 func _reset() -> void:
 	scale = Vector3.ONE
 	area_3d.set_deferred("monitorable", true)
@@ -62,14 +62,14 @@ func _reset() -> void:
 	item_drop_index = 0
 	visible = true
 	if on_bust:
-		var our_surface_handler := SOGlobal.current_level_manager.sm_64_surface_objects_handler as SM64SurfaceObjectsHandler
+		var our_surface_handler := SOGlobal.current_level_manager.sm_64_surface_objects_handler as LibSM64SurfaceObjectsHandler
 		our_surface_handler.load_surface_object(box_collision)
 	on_bust = false
 
 func _on_area_3d_area_entered(area):
 	if !visible:
 		return
-	if area.get_parent() is SM64Mario:
+	if area.get_parent() is LibSM64Mario:
 		_bust()
 	else:
 		position += Vector3.UP

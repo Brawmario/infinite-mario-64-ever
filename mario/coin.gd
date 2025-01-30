@@ -38,7 +38,7 @@ func _set_physics_enabled(in_physics : bool) -> void:
 		physics = false
 		drop_to_ground_cast.target_position = Vector3(0, -2.5, 0)
 		drop_to_ground_cast.shape.radius = 0.1
-	
+
 
 func _physics_process(delta):
 	if physics and visible:
@@ -75,8 +75,8 @@ func _respawn():
 func _on_area_3d_area_entered(area: Area3D):
 	if !visible:
 		return
-	if area.get_parent() is SM64Mario:
-		var collect_mario := area.get_parent() as SM64Mario
+	if area.get_parent() is LibSM64Mario:
+		var collect_mario := area.get_parent() as LibSM64Mario
 		collect_mario.heal(coin_value * 4)
 		collect_mario.current_coin_count += coin_value
 		var required_coins : int = ceil(min(100, SOGlobal.total_coins * 0.9))
