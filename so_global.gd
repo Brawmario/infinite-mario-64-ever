@@ -6,7 +6,7 @@ var level_start_time : int = 0
 var current_mario : LibSM64Mario
 var current_level_manager
 var current_seed : String
-var block_material := preload("res://mario/block_material.tres") as ShaderMaterial
+var block_material : ShaderMaterial
 var sky_material := preload("res://mario/sky_material.tres") as ShaderMaterial
 var global_sound := AudioStreamPlayer.new() as AudioStreamPlayer
 var global_sound_stream := AudioStreamPolyphonic.new() as AudioStreamPolyphonic
@@ -18,6 +18,7 @@ var restart_desired : bool = false
 var inner_deadzone : float = 0.05
 var outer_deadzone : float = 0.95
 var flip_x : bool = true
+var compat_renderer : bool = ProjectSettings.get_setting("rendering/renderer/rendering_method") == "gl_compatibility"
 
 func play_sound(inSound, volume : float = 0, pitch : float = 1) -> void:
 	var playback : AudioStreamPlaybackPolyphonic = global_sound.get_stream_playback()
@@ -195,6 +196,11 @@ func _ready():
 			print(event)
 			print(event.device)
 	save_data.load_game()
+
+	if compat_renderer:
+		block_material = load("res://mario/block_material_compat.tres")
+	else:
+		block_material = load("res://mario/block_material.tres")
 
 
 var unfocused := false

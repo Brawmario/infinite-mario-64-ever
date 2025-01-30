@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://jm5yfg5aymmu"]
+
+[ext_resource type="Shader" path="res://mario/block_material_compat.gdshader" id="1_jvl4s"]
+[ext_resource type="Texture2D" uid="uid://4p0r0mbyvhja" path="res://mario/debug_floor_slope.png" id="2_4c8kb"]
+[ext_resource type="Texture2D" uid="uid://bv5hj342vy6tc" path="res://mario/debug_floor.png" id="3_hynf5"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jvl4s")
+shader_parameter/color_multiply = Vector3(1, 1, 1)
+shader_parameter/outer_time = 5.0
+shader_parameter/fade_in = null
+shader_parameter/fade_in_duration = null
+shader_parameter/fade_in_distance = null
+shader_parameter/spawn_dir = null
+shader_parameter/spawn_pos = null
+shader_parameter/texture_albedo = ExtResource("3_hynf5")
+shader_parameter/slope_texture_albedo = ExtResource("2_4c8kb")
+shader_parameter/texture_gradient = ExtResource("3_hynf5")

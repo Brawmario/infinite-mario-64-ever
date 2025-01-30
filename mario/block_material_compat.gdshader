@@ -7,11 +7,11 @@ uniform sampler2D slope_texture_albedo : source_color,filter_linear_mipmap,repea
 uniform sampler2D texture_gradient : source_color,filter_linear_mipmap,repeat_enable;
 uniform vec3 color_multiply;
 uniform float outer_time;
-instance uniform float fade_in;
-instance uniform float fade_in_duration;
-instance uniform float fade_in_distance;
-instance uniform vec3 spawn_dir;
-instance uniform vec3 spawn_pos;
+uniform float fade_in;
+uniform float fade_in_duration;
+uniform float fade_in_distance;
+uniform vec3 spawn_dir;
+uniform vec3 spawn_pos;
 varying vec3 world_pos;
 varying vec3 use_normal;
 varying vec2 UVX;

@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bbflq1vcknt2x"]
 
 [ext_resource type="Shader" path="res://sky_shader.gdshader" id="1_8c870"]
-[ext_resource type="Texture2D" uid="uid://bmwgsn0nj0cmn" path="res://mario/dark_world.webp" id="2_3223a"]
+[ext_resource type="Texture2D" uid="uid://bmwgsn0nj0cmn" path="res://mario/dark_world.webp" id="2_327x2"]
 
 [sub_resource type="Gradient" id="Gradient_npu58"]
 interpolation_color_space = 2
@@ -13,5 +13,5 @@ gradient = SubResource("Gradient_npu58")
 
 [resource]
 shader = ExtResource("1_8c870")
-shader_parameter/sky_texture = ExtResource("2_3223a")
+shader_parameter/sky_texture = ExtResource("2_327x2")
 shader_parameter/sky_color_ramp = SubResource("GradientTexture1D_5qubn")

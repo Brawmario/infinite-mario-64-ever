@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://chwbviyuojqr5"
 path.s3tc="res://.godot/imported/sparkle_shine.png-22d575b4443ece30ce6e424dd6a2c3f4.s3tc.ctex"
+path.etc2="res://.godot/imported/sparkle_shine.png-22d575b4443ece30ce6e424dd6a2c3f4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://mario/vfx/sparkle_shine.png"
-dest_files=["res://.godot/imported/sparkle_shine.png-22d575b4443ece30ce6e424dd6a2c3f4.s3tc.ctex"]
+dest_files=["res://.godot/imported/sparkle_shine.png-22d575b4443ece30ce6e424dd6a2c3f4.s3tc.ctex", "res://.godot/imported/sparkle_shine.png-22d575b4443ece30ce6e424dd6a2c3f4.etc2.ctex"]
 
 [params]
 

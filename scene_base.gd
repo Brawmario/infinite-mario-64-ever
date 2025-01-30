@@ -510,8 +510,6 @@ func _create_mario_world(useSeed = str(randi())) -> void:
 
 	SOGlobal.current_seed = useSeed
 
-	LibSM64Global.load_rom_file("./SM64.z64")
-
 	LibSM64.scale_factor = 110.0
 
 	SOGlobal.total_coins = 0
@@ -646,6 +644,8 @@ func _create_mario_world(useSeed = str(randi())) -> void:
 	await sky_noise_texture.changed
 	SOGlobal.sky_material.set_shader_parameter("sky_texture", sky_noise_texture)
 	world_environment.environment.fog_density = sky_random.randf_range(0.0005, 0.01)
+	if SOGlobal.compat_renderer:
+		world_environment.environment.fog_light_energy *= 0.25
 
 func _ready() -> void:
 	_create_mario_world()
