@@ -27,13 +27,13 @@ jobs:
 
       - name: Export game
         id: export
-        uses: firebelley/godot-export@v5.2.1
+        uses: firebelley/godot-export@v6.0.0
         with:
-          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
-          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_export_templates.tpz
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
           relative_project_path: ./
-          cache: true
           archive_output: true
+          cache: true
 #          wine_path: ${{ steps.wine_install.outputs.wine_path }}
 
       - name: Rename archives
@@ -44,10 +44,11 @@ jobs:
           mv "LinuxX11.zip"        "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.linux.zip"
           mv "Web.zip"             "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.zip"
 
-      - name: Create release
-        uses: ncipollo/release-action@v1
+      - name: Make release
+        uses: softprops/action-gh-release@v2
         with:
-          artifacts: ${{ steps.export.outputs.archive_directory }}/*
+          files: |
+              ${{ steps.export.outputs.archive_directory }}/*
 
       - name: Install Butler
         run: |
