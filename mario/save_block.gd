@@ -32,7 +32,7 @@ func try_add_star_data_entry(in_id : String, in_time : float, in_coins : int, in
 		new_data.checkpoints_used = in_num_checkpoints
 		star_data_lookup[in_id] = star_data.size()
 		star_data.append(new_data)
-	
+
 	#did we collect more coins this time?
 	if in_coins > coins:
 		#print("this star also has more coins, so let's update the coin count on this block")

@@ -77,7 +77,7 @@ upper_fade = 0.2
 lower_fade = 0.2
 
 [node name="ShadowCompat" parent="." instance=ExtResource("4_yv6x3")]
-width = 2.0
+size = Vector2(2, 2)
 texture = ExtResource("3_6ol4u")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

@@ -90,7 +90,7 @@ distance_fade_begin = 15.0
 distance_fade_length = 5.0
 
 [node name="ShadowCompat" parent="." instance=ExtResource("4_4y0el")]
-width = 0.5
+size = Vector2(0.5, 0.5)
 texture = ExtResource("3_35an5")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
