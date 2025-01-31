@@ -14,16 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-#      - name: Install Wine
-#        id: wine_install
-#        run: |
-#          sudo apt update && sudo apt install wine64
-#          wine64 --version
-#          echo "wine_path=$(which wine64)" >> $GITHUB_OUTPUT
+#     - name: Install Wine
+#       id: wine_install
+#       run: |
+#         sudo apt update && sudo apt install wine64
+#         wine64 --version
+#         echo "wine_path=$(which wine64)" >> $GITHUB_OUTPUT
 
       - name: Export game
         id: export
@@ -34,15 +35,17 @@ jobs:
           relative_project_path: ./
           archive_output: true
           cache: true
-#          wine_path: ${{ steps.wine_install.outputs.wine_path }}
+#         wine_path: ${{ steps.wine_install.outputs.wine_path }}
 
       - name: Rename archives
         run: |
           cd ${{ steps.export.outputs.archive_directory }}
-          mv "Windows Desktop.zip" "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.windows.zip"
-          mv "macOS.zip"           "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.mac.zip"
-          mv "Linux.zip"           "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.linux.zip"
-          mv "Web.zip"             "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.zip"
+          mv "Windows Desktop.zip"  "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.windows.zip"
+          mv "macOS.zip"            "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.mac.zip"
+          mv "Linux.zip"            "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.linux.zip"
+          mv "Web.zip"              "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.zip"
+          mv "Web (PWA).zip"        "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.pwa.zip"
+          mv "Web (no threads).zip" "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.no-threads.zip"
 
       - name: Make release
         uses: softprops/action-gh-release@v2
@@ -76,4 +79,4 @@ jobs:
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ${{ steps.export.outputs.build_directory }}/Web
+          folder: ${{ steps.export.outputs.build_directory }}/Web (PWA)
