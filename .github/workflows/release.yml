@@ -1,0 +1,78 @@
+name: Release game on Github and Itch.io
+on:
+  push:
+    tags:
+      - 'v*'
+
+env:
+  GAME_NAME: ${{ github.event.repository.name }}
+  GAME_VERSION: ${{ github.ref_name }}
+
+jobs:
+  release-game:
+    name: Release game
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Wine
+        id: wine_install
+        run: |
+          sudo apt install wine64
+          wine64 --version
+          echo "wine_path=$(which wine64)" >> $GITHUB_OUTPUT
+
+      - name: Export game
+        id: export
+        uses: firebelley/godot-export@v5.2.1
+        with:
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_export_templates.tpz
+          relative_project_path: ./
+          cache: true
+          archive_output: true
+          wine_path: ${{ steps.wine_install.outputs.wine_path }}
+
+      - name: Rename archives
+        run: |
+          cd ${{ steps.export.outputs.archive_directory }}
+          mv "Windows Desktop.zip" "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.windows.zip"
+          mv "macOS.zip"           "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.mac.zip"
+          mv "LinuxX11.zip"        "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.linux.zip"
+          mv "Web.zip"             "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.zip"
+
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: ${{ steps.export.outputs.archive_directory }}/*
+
+      - name: Install Butler
+        run: |
+          curl -L -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
+          7z x butler.zip
+          sudo cp butler /usr/bin
+          sudo chmod +x /usr/bin/butler
+          butler -V
+
+      - name: Butler upload
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+          ITCH_USER: brawmario
+          ITCH_GAME: ${{ env.GAME_NAME }}
+          WINDOWS_ARCHIVE: ${{ steps.export.outputs.archive_directory }}/${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.windows.zip
+          MACOS_ARCHIVE: ${{ steps.export.outputs.archive_directory }}/${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.mac.zip
+          LINUX_ARCHIVE: ${{ steps.export.outputs.archive_directory }}/${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.linux.zip
+          WEB_ARCHIVE: ${{ steps.export.outputs.archive_directory }}/${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.zip
+        run: |
+          butler push "${{ env.WINDOWS_ARCHIVE }}" ${{ env.ITCH_USER }}/${{ env.ITCH_GAME }}:windows --userversion ${{ env.GAME_VERSION }}
+          butler push "${{ env.MACOS_ARCHIVE }}"   ${{ env.ITCH_USER }}/${{ env.ITCH_GAME }}:mac     --userversion ${{ env.GAME_VERSION }}
+          butler push "${{ env.LINUX_ARCHIVE }}"   ${{ env.ITCH_USER }}/${{ env.ITCH_GAME }}:linux   --userversion ${{ env.GAME_VERSION }}
+          butler push "${{ env.WEB_ARCHIVE }}"     ${{ env.ITCH_USER }}/${{ env.ITCH_GAME }}:web     --userversion ${{ env.GAME_VERSION }}
+
+      - name: Deploy to Github Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ${{ steps.export.outputs.build_directory }}/Web
