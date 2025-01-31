@@ -18,12 +18,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Wine
-        id: wine_install
-        run: |
-          sudo apt update && sudo apt install wine64
-          wine64 --version
-          echo "wine_path=$(which wine64)" >> $GITHUB_OUTPUT
+#      - name: Install Wine
+#        id: wine_install
+#        run: |
+#          sudo apt update && sudo apt install wine64
+#          wine64 --version
+#          echo "wine_path=$(which wine64)" >> $GITHUB_OUTPUT
 
       - name: Export game
         id: export
@@ -34,7 +34,7 @@ jobs:
           relative_project_path: ./
           cache: true
           archive_output: true
-          wine_path: ${{ steps.wine_install.outputs.wine_path }}
+#          wine_path: ${{ steps.wine_install.outputs.wine_path }}
 
       - name: Rename archives
         run: |
