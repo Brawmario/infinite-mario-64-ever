@@ -41,7 +41,7 @@ jobs:
           cd ${{ steps.export.outputs.archive_directory }}
           mv "Windows Desktop.zip" "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.windows.zip"
           mv "macOS.zip"           "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.mac.zip"
-          mv "LinuxX11.zip"        "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.linux.zip"
+          mv "Linux.zip"           "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.linux.zip"
           mv "Web.zip"             "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.zip"
 
       - name: Make release
