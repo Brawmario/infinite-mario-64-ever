@@ -193,10 +193,6 @@ anti_aliasing/scale=1.0
 
 [shader_globals]
 
-camera_angles={
-"type": "vec3",
-"value": Vector3(0.635, 0, 0)
-}
 aspect_ratio={
 "type": "float",
 "value": 1.778

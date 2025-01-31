@@ -4,7 +4,6 @@ render_mode use_debanding;
 
 uniform sampler2D sky_texture;
 uniform sampler2D sky_color_ramp;
-global uniform vec3 camera_angles;
 global uniform float aspect_ratio;
 
 void sky() {

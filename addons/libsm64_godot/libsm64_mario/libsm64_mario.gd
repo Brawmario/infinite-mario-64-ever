@@ -402,7 +402,6 @@ func _process(delta: float) -> void:
 			ratio = ease(ratio, -2)
 			camera.global_transform = camera.global_transform.interpolate_with(view_stage_transform, ratio)
 
-	RenderingServer.global_shader_parameter_set("camera_angles", camera.rotation)
 	RenderingServer.global_shader_parameter_set("aspect_ratio", get_window().size.x / get_window().size.y)
 	#DebugDraw2D.set_text("COIN COUNT", current_coin_count)
 	coin_counter.text = "$*" + str(current_coin_count)
