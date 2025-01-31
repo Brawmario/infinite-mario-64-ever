@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://chywjivaku4k3"]
+[gd_scene load_steps=10 format=4 uid="uid://chywjivaku4k3"]
 
 [ext_resource type="Script" path="res://mario/cork_block.gd" id="1_j0jgp"]
 [ext_resource type="Texture2D" uid="uid://dd1r46cq0tuiq" path="res://mario/bonk_block.png" id="1_kvav4"]
 [ext_resource type="Texture2D" uid="uid://3x8i56qfymmu" path="res://mario/cork_shadow.png" id="3_6ol4u"]
+[ext_resource type="PackedScene" uid="uid://ddvvo4lcraxda" path="res://shadow_compat/shadow_compat.tscn" id="4_yv6x3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ae24f"]
 albedo_texture = ExtResource("1_kvav4")
@@ -14,11 +15,11 @@ _surfaces = [{
 "aabb": AABB(-0.6, -0.6, -0.6, 1.2, 1.2, 1.20001),
 "format": 34896613377,
 "index_count": 36,
-"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 2, 0, 7, 0, 3, 0, 2, 0, 6, 0, 7, 0, 6, 0, 5, 0, 7, 0, 6, 0, 4, 0, 5, 0, 4, 0, 1, 0, 5, 0, 4, 0, 0, 0, 1, 0, 2, 0, 4, 0, 6, 0, 2, 0, 0, 0, 4, 0, 7, 0, 1, 0, 3, 0, 7, 0, 5, 0, 1, 0),
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAHAAMAAgAGAAcABgAFAAcABgAEAAUABAABAAUABAAAAAEAAgAEAAYAAgAAAAQABwABAAMABwAFAAEA"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 255, 255, 254, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
+"vertex_data": PackedByteArray("AAAAAP7/AAAAAP///v8AAAAAAAAAAAAAAAD//wAAAAD//wAA/v8AAP/////+/wAA//8AAAAAAAD/////AAAAAA==")
 }]
 blend_shape_mode = 0
 
@@ -26,15 +27,15 @@ blend_shape_mode = 0
 resource_name = "level1_ref_Cube"
 _surfaces = [{
 "aabb": AABB(-0.6, -0.6, -0.6, 1.2, 1.2, 1.20001),
-"attribute_data": PackedByteArray(254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 254, 255, 255, 255, 0, 0, 0, 0, 254, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 254, 255, 255, 255, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0),
+"attribute_data": PackedByteArray("/v///wAAAAAAAP///v8AAAAAAAD//wAAAAD//wAA///+////AAAAAP7/AAD///////8AAP7///8AAP///v8AAAAAAAAAAAAA/////wAA///+////AAAAAAAA///+/wAA"),
 "format": 34896613399,
 "index_count": 36,
-"index_data": PackedByteArray(0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0),
+"index_data": PackedByteArray("AAAJAAMAAAAGAAkACAAVAAoACAATABUAFAARABcAFAAOABEADQAEAA8ADQACAAQABwAMABIABwABAAwAFgAFAAsAFgAQAAUA"),
 "material": SubResource("StandardMaterial3D_ae24f"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 254, 255, 255, 127, 0, 0, 255, 255, 254, 255, 255, 191, 0, 0, 255, 255, 254, 255, 255, 127, 0, 0, 255, 255, 254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 127, 255, 255, 0, 0, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 127, 255, 255, 255, 255, 254, 255, 255, 255, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 191, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 0, 0, 0, 0, 255, 127, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 0, 0)
+"vertex_data": PackedByteArray("AAAAAP7//78AAAAA/v//vwAAAAD+//9/AAD///7//78AAP///v//fwAA///+////AAAAAAAA/78AAAAAAAD/vwAAAAAAAP//AAD//wAA/78AAP//AAD//wAA//8AAP////8AAP7//7///wAA/v//f///AAD+//+///////7//3///////v/////////+//+///8AAAAA/7///wAAAAD/////AAAAAP+//////wAA////////AAD///////8AAP+//3///wAA/3//f////3////9/////f/+//3///wAA/3//f////3////9/////f/+/AAD/f/9/////fwAA/3////9//7//fwAAAAD/f/9/////fwAA/3////9//7//fwAA")
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ucsde")
@@ -74,5 +75,9 @@ texture_albedo = ExtResource("3_6ol4u")
 normal_fade = 0.9
 upper_fade = 0.2
 lower_fade = 0.2
+
+[node name="ShadowCompat" parent="." instance=ExtResource("4_yv6x3")]
+width = 2.0
+texture = ExtResource("3_6ol4u")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

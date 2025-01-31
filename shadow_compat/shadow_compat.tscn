@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddvvo4lcraxda"]
+
+[ext_resource type="Script" path="res://shadow_compat/shadow_compat.gd" id="1_3rkws"]
+[ext_resource type="Texture2D" uid="uid://dhp0h2p7egisy" path="res://mario/shadow.png" id="2_pxxsi"]
+
+[node name="ShadowCompat" type="RayCast3D"]
+top_level = true
+enabled = false
+target_position = Vector3(0, -25, 0)
+script = ExtResource("1_3rkws")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+modulate = Color(1, 1, 1, 0.75)
+texture = ExtResource("2_pxxsi")

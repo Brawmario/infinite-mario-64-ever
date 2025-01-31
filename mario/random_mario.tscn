@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cg8l4angkunu5"]
+[gd_scene load_steps=31 format=4 uid="uid://cg8l4angkunu5"]
 
 [ext_resource type="Script" path="res://addons/libsm64_godot/libsm64_mario/libsm64_mario.gd" id="1_vy05d"]
 [ext_resource type="FontFile" uid="uid://c25d003g01x4h" path="res://mario/Mario64.ttf" id="2_3w352"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://csm3y75usd5u5" path="res://mario/health_slices.png" id="9_0e7ou"]
 [ext_resource type="Shader" path="res://mario/health_slices.gdshader" id="9_03fle"]
 [ext_resource type="Texture2D" uid="uid://u6j2nxksso1y" path="res://mario/checkpoint_guide.png" id="13_s5g3h"]
+[ext_resource type="PackedScene" uid="uid://ddvvo4lcraxda" path="res://shadow_compat/shadow_compat.tscn" id="14_np1gi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x706x"]
 render_priority = 0
@@ -336,3 +337,6 @@ offset_bottom = -0.163025
 texture = ExtResource("13_s5g3h")
 expand_mode = 3
 stretch_mode = 4
+
+[node name="ShadowCompat" parent="." instance=ExtResource("14_np1gi")]
+texture = ExtResource("3_cdwnk")
