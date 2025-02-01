@@ -40,12 +40,12 @@ jobs:
       - name: Rename archives
         run: |
           cd ${{ steps.export.outputs.archive_directory }}
-          mv "Windows Desktop.zip"  "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.windows.zip"
-          mv "macOS.zip"            "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.mac.zip"
-          mv "Linux.zip"            "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.linux.zip"
-          mv "Web.zip"              "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.zip"
-          mv "Web (PWA).zip"        "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.pwa.zip"
-          mv "Web (no threads).zip" "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.no-threads.zip"
+          mv "Windows Desktop.zip" "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.windows.zip"
+          mv "macOS.zip"           "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.mac.zip"
+          mv "Linux.zip"           "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.linux.zip"
+          mv "Web.zip"             "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.zip"
+          mv "Web(PWA).zip"        "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.pwa.zip"
+          mv "Web(nothreads).zip"  "${{ env.GAME_NAME }}.${{ env.GAME_VERSION }}.web.nothreads.zip"
 
       - name: Make release
         uses: softprops/action-gh-release@v2
@@ -79,4 +79,4 @@ jobs:
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: "${{ steps.export.outputs.build_directory }}/Web (PWA)"
+          folder: ${{ steps.export.outputs.build_directory }}/Web(PWA)
