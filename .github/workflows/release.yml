@@ -79,4 +79,4 @@ jobs:
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ${{ steps.export.outputs.build_directory }}/Web (PWA)
+          folder: "${{ steps.export.outputs.build_directory }}/Web (PWA)"
