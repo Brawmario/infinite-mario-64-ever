@@ -239,8 +239,6 @@ func _process(delta: float) -> void:
 	if _id < 0:
 		return
 
-	if SOGlobal.unfocused:
-		return
 	if position.y <= -32:
 		if checkpoint_flag and is_instance_valid(checkpoint_flag):
 			_restore_mario_to_checkpoint()
@@ -441,6 +439,9 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta):
 	if _id < 0:
+		return
+
+	if _paused:
 		return
 
 	_time_since_last_tick += delta

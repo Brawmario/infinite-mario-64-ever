@@ -94,6 +94,7 @@ func call_selection_function(desired_button : int) -> void:
 func _unpause() -> void:
 	await get_tree().create_timer(0.05).timeout
 	SOGlobal.current_mario._paused = false
+	SOGlobal.current_mario._last_tick_usec = Time.get_ticks_usec()
 	queue_free()
 
 @onready var star_counter = $Control/StatDisplay/HBoxContainer/StarCounter
